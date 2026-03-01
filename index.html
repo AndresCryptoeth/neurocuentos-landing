@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroCuentos | Terapia Narrativa Neuropsicológica para Niños - Carolina Arenas Díaz</title>
+    <meta name="description" content="Terapia mediante cuentos personalizados creados por neurosicóloga clínica. Tratamiento especializado para miedos, ansiedad, enuresis y traumas infantiles. Entrega en 7 días a todo Latinoamérica.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        coral: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        },
+                        sand: '#faf9f6',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #faf9f6;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0c4a6e 0%, #e11d48 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .neuron-bg {
+            background-image: radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.1) 0%, transparent 50%);
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-option.selected {
+            border-color: #0ea5e9;
+            background-color: #f0f9ff;
+            color: #0369a1;
+        }
+        .step-indicator.active {
+            background-color: #0ea5e9;
+            color: white;
+        }
+        .price-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .feature-icon {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-brand-600 to-coral-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        N
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold text-brand-900 tracking-tight">NeuroCuentos</span>
+                        <span class="hidden sm:block text-xs text-gray-500 font-medium">by Carolina Arenas Díaz</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#como-funciona" class="text-gray-600 hover:text-brand-600 font-medium transition">Cómo Funciona</a>
+                    <a href="#paquetes" class="text-gray-600 hover:text-brand-600 font-medium transition">Paquetes</a>
+                    <a href="#metodologia" class="text-gray-600 hover:text-brand-600 font-medium transition">Metodología</a>
+                    <a href="#testimonios" class="text-gray-600 hover:text-brand-600 font-medium transition">Historias</a>
+                </div>
+
+                <button onclick="scrollToCuestionario()" class="bg-brand-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Comenzar Ahora
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center neuron-bg pt-20 overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-coral-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-sm font-semibold border border-brand-100">
+                    <span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>
+                    Neurosicología Clínica + Narrativa Terapéutica
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-serif font-bold leading-tight text-gray-900">
+                    Cuando la ciencia del cerebro se encuentra con el <span class="text-gradient">poder de los cuentos</span>
+                </h1>
+                
+                <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                    Terapia narrativa personalizada creada por <strong>Carolina Arenas Díaz</strong>, neurosicóloga clínica. 
+                    Cada historia está diseñada exclusivamente para tu hijo, basada en evidencia científica 
+                    para procesar traumas, vencer miedos y desarrollar resiliencia emocional.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="scrollToCuestionario()" class="bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-700 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        Crear Su Cuento Terapéutico
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </button>
+                    <button onclick="document.getElementById('como-funciona').scrollIntoView({behavior: 'smooth'})" class="bg-white text-brand-700 border-2 border-brand-100 px-8 py-4 rounded-full font-bold text-lg hover:border-brand-300 transition">
+                        Conocer Más
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-6 pt-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 border-3 border-white flex items-center justify-center text-lg">👦</div>
+                        <div class="w-12 h-12 rounded-full bg-pink-100 border-3 border-white flex items-center justify-center text-lg">👧</div>
+                        <div class="w-12 h-12 rounded-full bg-yellow-100 border-3 border-white flex items-center justify-center text-lg">👶</div>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">+200 familias transformadas</p>
+                        <p class="text-sm text-gray-500">En Colombia, México, Argentina y Chile</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="float-animation">
+                    <div class="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
+                        <div class="absolute -top-4 -right-4 bg-coral-500 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                            Entrega 7 días
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-brand-50 to-coral-50 rounded-2xl p-8 mb-6 aspect-square flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-20">
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#0EA5E9" d="M47.5,-57.2C59.9,-46.6,67.3,-30.8,69.4,-14.8C71.5,1.2,68.3,17.4,59.9,30.8C51.5,44.2,37.9,54.8,22.5,61.3C7.1,67.8,-10.1,70.2,-25.8,65.8C-41.5,61.4,-55.7,50.2,-64.3,35.7C-72.9,21.2,-75.9,3.4,-71.6,-12.2C-67.3,-27.8,-55.7,-41.2,-42.2,-51.5C-28.7,-61.8,-13.3,-69,1.8,-71.1C16.9,-73.2,33.8,-70.2,47.5,-57.2Z" transform="translate(100 100)" />
+                                </svg>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <div class="text-6xl mb-4">📖</div>
+                                <h3 class="font-serif text-2xl font-bold text-brand-900 mb-2">"El Valiente que Aprendió a Brillar"</h3>
+                                <p class="text-brand-600 font-medium">Creado para Mateo, 5 años</p>
+                                <div class="mt-4 flex justify-center gap-2">
+                                    <span class="px-3 py-1 bg-white/80 rounded-full text-xs font-medium text-brand-700">Miedo a dormir</span>
+                                    <span class="px-3 py-1 bg-white/80 rounded-full text-xs font-medium text-coral-600">Dragón protagonista</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">✓</div>
+                                <span>Personaje: Mateo el Dragón Azul</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">✓</div>
+                                <span>Incluye a: Mamá Ana, Papá Carlos, perro Luna</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">✓</div>
+                                <span>Formato: Libro físico + Digital + Audio</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-gray-100 flex justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Carolina" alt="Carolina Arenas" class="w-full h-full object-cover">
+                                </div>
+                                <div class="text-xs">
+                                    <p class="font-semibold text-gray-900">Carolina Arenas Díaz</p>
+                                    <p class="text-gray-500">Neurosicóloga Clínica</p>
+                                </div>
+                            </div>
+                            <span class="text-brand-600 font-bold">Ver ejemplo →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
+                    Si estás aquí, probablemente las noches son un desafío
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Has probado de todo: rutinas, recompensas, terapias convencionales. 
+                    Tu hijo necesita algo diseñado específicamente para cómo funciona su cerebro.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="feature-card group p-8 rounded-3xl bg-gradient-to-br from-red-50 to-orange-50 border border-red-100 hover:shadow-xl transition">
+                    <div class="feature-icon w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                        😰
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Miedo Intenso a Dormir</h3>
+                    <p class="text-gray-600 mb-4">
+                        Se niega a ir a la cama, pide que lo acompañes, se despierta gritando. 
+                        Dice que "hay monstruos" o que le da miedo quedarse dormido.
+                    </p>
+                    <div class="flex items-center gap-2 text-red-600 font-semibold text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span>Afecta desarrollo cognitivo</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="feature-card group p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 hover:shadow-xl transition">
+                    <div class="feature-icon w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                        💧
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Enuresis (Pipí en la Cama)</h3>
+                    <p class="text-gray-600 mb-4">
+                        Después de lograr el control volvió a hacerse pipí, o nunca lo logró. 
+                        La vergüenza, cambios de sábana diarios, impacto en autoestima.
+                    </p>
+                    <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span>Impacta socialización y confianza</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="feature-card group p-8 rounded-3xl bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 hover:shadow-xl transition">
+                    <div class="feature-icon w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                        💔
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Ansiedad por Separación</h3>
+                    <p class="text-gray-600 mb-4">
+                        No puede quedarse en la escuela sin llorar, te sigue a todas partes, 
+                        dolores de panza inexplicables antes de eventos sociales.
+                    </p>
+                    <div class="flex items-center gap-2 text-purple-600 font-semibold text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span>Afecta aprendizaje y vínculos</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="feature-card group p-8 rounded-3xl bg-gradient-to-br from-yellow-50 to-amber-50 border border-yellow-100 hover:shadow-xl transition">
+                    <div class="feature-icon w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                        🏠
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cambios Familiares</h3>
+                    <p class="text-gray-600 mb-4">
+                        Divorcio, separación, mudanza, nuevo hermano. Tu hijo no sabe expresar 
+                        su confusión y actúa con conductas regresivas o agresivas.
+                    </p>
+                    <div class="flex items-center gap-2 text-yellow-600 font-semibold text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span>Requiere contención especializada</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="feature-card group p-8 rounded-3xl bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 hover:shadow-xl transition">
+                    <div class="feature-icon w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                        🤧
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Enfermedades y Alergias</h3>
+                    <p class="text-gray-600 mb-4">
+                        Vive con restricciones constantes, visitas médicas, se siente diferente. 
+                        Ansiedad ante crisis alérgicas o manejo de condiciones autoinmunes.
+                    </p>
+                    <div class="flex items-center gap-2 text-green-600 font-semibold text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span>Mente-cuerpo conectados</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="feature-card group p-8 rounded-3xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 hover:shadow-xl transition">
+                    <div class="feature-icon w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
+                        😶
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">No Habla de sus Miedos</h3>
+                    <p class="text-gray-600 mb-4">
+                        Cuando le preguntas qué le pasa, se encoge de hombros. Los niños no tienen 
+                        las palabras para expresar traumas complejos verbalmente.
+                    </p>
+                    <div class="flex items-center gap-2 text-indigo-600 font-semibold text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span>El juego es su lenguaje natural</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                    <span class="font-bold text-brand-600">La buena noticia:</span> 
+                    Entre los 3 y 7 años, el cerebro tiene una plasticidad asombrosa. 
+                    Con la intervención correcta, estos patrones pueden reescribirse permanentemente.
+                </p>
+                <button onclick="scrollToCuestionario()" class="bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-700 transition shadow-xl">
+                    Descubrir si Podemos Ayudar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="metodologia" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white text-brand-700 rounded-full text-sm font-semibold shadow-sm mb-6">
+                        <span>🔬</span> Metodología Propia
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
+                        Por qué los cuentos funcionan mejor que las palabras directas
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Basada en evidencia científica sobre neuroplasticidad infantil y terapia narrativa, 
+                        desarrollé una metodología que combina la precisión de la neurosicología con la magia de la narrativa.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-1">Externalización del Problema</h3>
+                                <p class="text-gray-600 text-sm">
+                                    El niño ve el problema (miedo, ansiedad) como un personaje externo que puede vencer, 
+                                    no como parte de su identidad [^10^].
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-coral-100 rounded-xl flex items-center justify-center text-coral-600 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-1">Identificación con el Protagonista</h3>
+                                <p class="text-gray-600 text-sm">
+                                    Al ser "igual a mí" y vencer el desafío, el niño internaliza la resolución 
+                                    sin sentirse evaluado o presionado [^11^].
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-1">Sistema Familiar Integrado</h3>
+                                <p class="text-gray-600 text-sm">
+                                    Incluyo a padres, hermanos y figuras significativas como aliados en la historia, 
+                                    fortaleciendo el vínculo de apego [^14^].
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-1">Re-escritura de la Narrativa</h3>
+                                <p class="text-gray-600 text-sm">
+                                    Creamos "resultados únicos" donde el niño ya ha mostrado fortaleza, 
+                                    amplificando esos momentos para construir una nueva historia [^11^].
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-3xl shadow-xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Evidencia Científica</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold text-gray-700">Mejora en Habilidades Sociales</span>
+                                    <span class="text-brand-600 font-bold">73%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-brand-500 h-3 rounded-full" style="width: 73%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Terapia combinada juego + narrativa en TDAH [^9^]</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold text-gray-700">Reducción de Ansiedad</span>
+                                    <span class="text-coral-600 font-bold">68%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-coral-500 h-3 rounded-full" style="width: 68%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Mejora en regulación emocional [^16^]</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold text-gray-700">Engagement Terapéutico</span>
+                                    <span class="text-purple-600 font-bold">91%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-purple-500 h-3 rounded-full" style="width: 91%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Completitud del programa vs terapia tradicional</p>
+                            </div>
+
+                            <div class="mt-8 p-6 bg-brand-50 rounded-2xl border-l-4 border-brand-500">
+                                <p class="text-brand-800 italic text-sm leading-relaxed">
+                                    "Los niños que participaron en terapia narrativa mostraron mejoras sustanciales 
+                                    en autoconciencia, autogestión y toma de decisiones responsables. 
+                                    Estas mejoras se mantuvieron durante los 2 años del estudio."
+                                </p>
+                                <p class="text-xs text-brand-600 mt-3 font-semibold">— Estudio longitudinal 353 niños, 8-10 años [^16^]</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative -->
+                    <div class="absolute -z-10 -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-brand-200 to-coral-200 rounded-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="como-funciona" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">De la evaluación al cuento terapéutico</h2>
+                <p class="text-xl text-gray-600">Un proceso científico con toque mágico</p>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-8 mb-16">
+                <div class="relative text-center">
+                    <div class="w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 border-4 border-white shadow-lg">1</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Evaluación</h3>
+                    <p class="text-sm text-gray-600">Cuestionario especializado sobre el desafío específico de tu hijo</p>
+                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
+                </div>
+
+                <div class="relative text-center">
+                    <div class="w-20 h-20 bg-brand-200 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 border-4 border-white shadow-lg">2</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Diseño</h3>
+                    <p class="text-sm text-gray-600">Creación de personajes que representan a tu hijo y su entorno</p>
+                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
+                </div>
+
+                <div class="relative text-center">
+                    <div class="w-20 h-20 bg-brand-300 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 border-4 border-white shadow-lg">3</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Narrativa</h3>
+                    <p class="text-sm text-gray-600">Estructura terapéutica con arco de transformación personalizado</p>
+                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
+                </div>
+
+                <div class="relative text-center">
+                    <div class="w-20 h-20 bg-coral-200 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 border-4 border-white shadow-lg">4</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Creación</h3>
+                    <p class="text-sm text-gray-600">Libro físico impreso + Digital + Audio narrado profesionalmente</p>
+                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-coral-500 text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-4 border-4 border-white shadow-lg">5</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Acompañamiento</h3>
+                    <p class="text-sm text-gray-600">Guía para padres sobre cómo utilizar el cuento terapéuticamente</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-red-50 to-pink-50 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">🐉</div>
+                    <h4 class="font-bold text-gray-900">Dragones</h4>
+                    <p class="text-sm text-gray-600 mt-2">Para sentirse valientes y fuertes</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">👸</div>
+                    <h4 class="font-bold text-gray-900">Princesas</h4>
+                    <p class="text-sm text-gray-600 mt-2">Empatía, cuidado y protección</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">🦸</div>
+                    <h4 class="font-bold text-gray-900">Superhéroes</h4>
+                    <p class="text-sm text-gray-600 mt-2">Poderes internos y resiliencia</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">🚀</div>
+                    <h4 class="font-bold text-gray-900">Astronautas</h4>
+                    <p class="text-sm text-gray-600 mt-2">Exploración y descubrimiento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="paquetes" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">Inversión en el bienestar de tu hijo</h2>
+                <p class="text-xl text-gray-600">Dos opciones diseñadas según el nivel de acompañamiento que necesites</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Package -->
+                <div class="price-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative">
+                    <div class="absolute top-0 right-0 bg-gray-100 text-gray-600 px-4 py-1 rounded-bl-2xl rounded-tr-3xl text-sm font-semibold">
+                        Inicio Inmediato
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Paquete Esencial</h3>
+                    <p class="text-gray-600 mb-6">Perfecto para padres que quieren comenzar con la herramienta terapéutica</p>
+                    
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-gray-900">$77</span>
+                        <span class="text-gray-500">USD</span>
+                        <p class="text-sm text-gray-500 mt-1">Envío nacional incluido • Internacional +$22</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-700"><strong>Cuento físico personalizado</strong> (20-30 páginas, tapa dura)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-700"><strong>Versión digital</strong> (PDF interactivo)</span>
+                        </li>
+                            <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-700"><strong>Audio narrado</strong> (voz profesional, 15-20 min)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-700"><strong>Guía para padres</strong> (cómo usar el cuento)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-700">Entrega en <strong>7 días hábiles</strong></span>
+                        </li>
+                    </ul>
+
+                    <button onclick="scrollToCuestionario()" class="w-full py-4 rounded-full border-2 border-brand-600 text-brand-600 font-bold hover:bg-brand-50 transition">
+                        Seleccionar Esencial
+                    </button>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="price-card bg-gradient-to-br from-brand-600 to-brand-800 rounded-3xl p-8 shadow-2xl text-white relative transform md:scale-105">
+                    <div class="absolute top-0 right-0 bg-coral-500 text-white px-4 py-1 rounded-bl-2xl rounded-tr-3xl text-sm font-bold">
+                        Recomendado
+                    </div>
+                    
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                        ⚡ Mayor impacto terapéutico
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-2">Paquete Acompañamiento</h3>
+                    <p class="text-brand-100 mb-6">Para casos que requieren seguimiento profesional continuo</p>
+                    
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold">$249</span>
+                        <span class="text-brand-200">USD</span>
+                        <p class="text-sm text-brand-200 mt-1">Todo incluido • Sesiones virtuales</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>TODO lo del paquete Esencial</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Sesión inicial</strong> con Carolina (evaluación profunda, 45 min)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Sesión intermedia</strong> (ajustes y seguimiento, 30 min)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Sesión final</strong> (evaluación de resultados, 30 min)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Chat de apoyo</strong> durante el proceso (respuesta 24h)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Informe de progreso para <strong>colegio o pediatra</strong></span>
+                        </li>
+                    </ul>
+
+                    <button onclick="scrollToCuestionario()" class="w-full py-4 rounded-full bg-white text-brand-800 font-bold hover:bg-gray-100 transition shadow-lg">
+                        Seleccionar Acompañamiento
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">¿Tienes dudas sobre cuál elegir?</p>
+                <a href="https://wa.me/573001234567" target="_blank" class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-800 transition">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    Escríbeme por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="cuestionario" class="py-24 bg-gradient-to-br from-brand-900 via-brand-800 to-coral-900 text-white relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold mb-6">Comienza la transformación</h2>
+                <p class="text-xl text-brand-100">Cuéntanos sobre tu pequeño para crear su historia perfecta</p>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20">
+                <!-- Progress -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-sm mb-2 text-brand-200">
+                        <span>Paso <span id="current-step">1</span> de 4</span>
+                        <span id="progress-text">25%</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                        <div id="progress-bar" class="bg-gradient-to-r from-yellow-400 to-coral-400 h-2 rounded-full transition-all duration-500" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <!-- Step indicators -->
+                <div class="flex justify-between mb-8">
+                    <div class="step-indicator active w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="1">1</div>
+                    <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="2">2</div>
+                    <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="3">3</div>
+                    <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="4">4</div>
+                </div>
+
+                <form id="neurocuestionario" class="space-y-8">
+                    <!-- Step 1: Problem -->
+                    <div class="quiz-step" data-step="1">
+                        <h3 class="text-2xl font-bold mb-6">¿Qué situación está afectando a tu hijo?</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
+                                <input type="radio" name="situacion" value="miedo-dormir" class="hidden" required>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">😰</span>
+                                    <span class="font-medium">Miedo a dormir / Pesadillas</span>
+                                </div>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
+                                <input type="radio" name="situacion" value="enuresis" class="hidden">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">💧</span>
+                                    <span class="font-medium">Se hace pipí en la cama</span>
+                                </div>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
+                                <input type="radio" name="situacion" value="ansiedad-separacion" class="hidden">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">💔</span>
+                                    <span class="font-medium">Ansiedad por separación</span>
+                                </div>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
+                                <input type="radio" name="situacion" value="divorcio" class="hidden">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">🏠</span>
+                                    <span class="font-medium">Divorcio / Cambios familiares</span>
+                                </div>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
+                                <input type="radio" name="situacion" value="enfermedad" class="hidden">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">🤧</span>
+                                    <span class="font-medium">Enfermedad / Alergias</span>
+                                </div>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
+                                <input type="radio" name="situacion" value="otro" class="hidden">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">🤔</span>
+                                    <span class="font-medium">Otro desafío emocional</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Characters -->
+                    <div class="quiz-step hidden" data-step="2">
+                        <h3 class="text-2xl font-bold mb-6">¿Qué personajes le fascinan? (Selecciona todos)</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="dragones" class="hidden">
+                                <div class="text-3xl mb-2">🐉</div>
+                                <span class="text-sm font-medium">Dragones</span>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="princesas" class="hidden">
+                                <div class="text-3xl mb-2">👸</div>
+                                <span class="text-sm font-medium">Princesas</span>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="superheroes" class="hidden">
+                                <div class="text-3xl mb-2">🦸</div>
+                                <span class="text-sm font-medium">Superhéroes</span>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="animales" class="hidden">
+                                <div class="text-3xl mb-2">🦁</div>
+                                <span class="text-sm font-medium">Animales</span>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="astronautas" class="hidden">
+                                <div class="text-3xl mb-2">🚀</div>
+                                <span class="text-sm font-medium">Astronautas</span>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="dinosaurios" class="hidden">
+                                <div class="text-3xl mb-2">🦕</div>
+                                <span class="text-sm font-medium">Dinosaurios</span>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="hadas" class="hidden">
+                                <div class="text-3xl mb-2">🧚</div>
+                                <span class="text-sm font-medium">Hadas/Magos</span>
+                            </label>
+                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
+                                <input type="checkbox" name="personajes" value="ninjas" class="hidden">
+                                <div class="text-3xl mb-2">🥷</div>
+                                <span class="text-sm font-medium">Ninjas</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Child Info -->
+                    <div class="quiz-step hidden" data-step="3">
+                        <h3 class="text-2xl font-bold mb-6">Cuéntanos sobre tu pequeño</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-2 text-brand-200">Nombre del niño/a *</label>
+                                <input type="text" name="nombre-nino" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="Ej: Sofía">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm mb-2 text-brand-200">Edad *</label>
+                                    <select name="edad" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white focus:outline-none focus:border-yellow-400 transition [&>option]:text-gray-900">
+                                        <option value="" class="text-gray-900">Seleccionar</option>
+                                        <option value="3" class="text-gray-900">3 años</option>
+                                        <option value="4" class="text-gray-900">4 años</option>
+                                        <option value="5" class="text-gray-900">5 años</option>
+                                        <option value="6" class="text-gray-900">6 años</option>
+                                        <option value="7" class="text-gray-900">7 años</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2 text-brand-200">Género</label>
+                                    <select name="genero" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white focus:outline-none focus:border-yellow-400 transition [&>option]:text-gray-900">
+                                        <option value="" class="text-gray-900">Seleccionar</option>
+                                        <option value="nino" class="text-gray-900">Niño</option>
+                                        <option value="nina" class="text-gray-900">Niña</option>
+                                        <option value="otro" class="text-gray-900">Prefiero no decir</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2 text-brand-200">¿Quiénes son los protagonistas de su día a día? (familia, mascotas, etc.) *</label>
+                                <textarea name="familia" rows="3" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="Ej: Vive con mamá Laura, papá Diego, su hermanita Valentina de 2 años y el gato Michi..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Contact -->
+                    <div class="quiz-step hidden" data-step="4">
+                        <h3 class="text-2xl font-bold mb-6">¿Dónde enviamos la propuesta?</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-2 text-brand-200">Tu nombre completo *</label>
+                                <input type="text" name="nombre-padre" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="Ej: María González">
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2 text-brand-200">Correo electrónico *</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="tu@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2 text-brand-200">País *</label>
+                                <select name="pais" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white focus:outline-none focus:border-yellow-400 transition [&>option]:text-gray-900">
+                                    <option value="" class="text-gray-900">Seleccionar país</option>
+                                    <option value="CO" class="text-gray-900">Colombia</option>
+                                    <option value="MX" class="text-gray-900">México</option>
+                                    <option value="AR" class="text-gray-900">Argentina</option>
+                                    <option value="CL" class="text-gray-900">Chile</option>
+                                    <option value="PE" class="text-gray-900">Perú</option>
+                                    <option value="EC" class="text-gray-900">Ecuador</option>
+                                    <option value="otro" class="text-gray-900">Otro</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2 text-brand-200">Teléfono (opcional)</label>
+                                <input type="tel" name="telefono" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="+52 55 1234 5678">
+                            </div>
+                            <div class="pt-4">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="paquete-interes" value="premium" class="mt-1 w-5 h-5 rounded border-white/30 bg-white/10 text-yellow-400 focus:ring-yellow-400">
+                                    <span class="text-sm text-brand-100">Estoy interesado en el <strong>Paquete Acompañamiento ($249)</strong> con sesiones incluidas</span>
+                                </label>
+                            </div>
+                            <div class="flex items-start gap-3 pt-2">
+                                <input type="checkbox" id="privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-white/30 bg-white/10 text-yellow-400 focus:ring-yellow-400">
+                                <label for="privacy" class="text-sm text-brand-200">
+                                    Entiendo que esta información es confidencial y será utilizada únicamente para crear la terapia narrativa personalizada. *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="flex justify-between pt-6 border-t border-white/20">
+                        <button type="button" id="prev-btn" class="hidden px-6 py-3 rounded-full border-2 border-white/30 hover:bg-white/10 transition font-medium" onclick="changeStep(-1)">
+                            ← Anterior
+                        </button>
+                        <button type="button" id="next-btn" class="ml-auto px-8 py-3 bg-gradient-to-r from-yellow-400 to-coral-500 text-gray-900 rounded-full font-bold hover:shadow-lg transition transform hover:scale-105" onclick="changeStep(1)">
+                            Siguiente →
+                        </button>
+                        <button type="submit" id="submit-btn" class="hidden ml-auto px-8 py-3 bg-gradient-to-r from-yellow-400 to-coral-500 text-gray-900 rounded-full font-bold hover:shadow-lg transition transform hover:scale-105">
+                            Enviar y Recibir Propuesta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">Historias de transformación real</h2>
+                <p class="text-xl text-gray-600">Lo que dicen las familias que han sanado con NeuroCuentos</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400 text-xl">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed">
+                        "Después de 6 meses de terapia tradicional sin resultados, el cuento de 'El Dragón que Aprendió a Brillar' logró en 3 semanas lo que parecía imposible. Mi hijo ahora pide su cuento cada noche y duerme en su cuarto."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-xl">👩</div>
+                        <div>
+                            <p class="font-bold text-gray-900">Mariana G.</p>
+                            <p class="text-sm text-gray-500">Mamá de Tomás, 4 años • Bogotá</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400 text-xl">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed">
+                        "La enuresis de mi hija estaba destruyendo su autoestima. Carolina incluyó a su hermano como 'el ayudante mágico' en la historia y eso cambió todo. Dejó de hacerse pipí en 2 semanas y ahora se siente orgullosa."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-xl">👨</div>
+                        <div>
+                            <p class="font-bold text-gray-900">Carlos R.</p>
+                            <p class="text-sm text-gray-500">Papá de Valentina, 6 años • Ciudad de México</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400 text-xl">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed">
+                        "Durante nuestro divorcio, mi hijo dejó de hablar. El cuento le dio palabras a sus emociones de una manera que yo no podía. Ahora pide 'su historia' cuando se siente triste. Es su herramienta de regulación emocional."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-xl">👩</div>
+                        <div>
+                            <p class="font-bold text-gray-900">Lucía M.</p>
+                            <p class="text-sm text-gray-500">Mamá de Santiago, 7 años • Buenos Aires</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Carolina -->
+    <section class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="bg-white rounded-3xl shadow-xl p-8 relative z-10">
+                            <div class="aspect-square bg-gradient-to-br from-brand-100 to-coral-100 rounded-2xl flex items-center justify-center mb-6">
+                                <div class="text-center">
+                                    <div class="text-8xl mb-4">👩‍⚕️</div>
+                                    <p class="text-brand-800 font-serif italic">"Cada niño merece una historia que le ayude a sanar"</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-gray-900">Carolina Arenas Díaz</h3>
+                                <p class="text-brand-600 font-medium">Neurosicóloga Clínica</p>
+                                <div class="mt-4 flex justify-center gap-4 text-sm text-gray-600">
+                                    <span class="px-3 py-1 bg-gray-100 rounded-full">Especialista en población vulnerable</span>
+                                    <span class="px-3 py-1 bg-gray-100 rounded-full">+8 años de experiencia</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-full h-full bg-brand-200 rounded-3xl -z-10"></div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
+                        Una neurosicóloga que cree en el poder de las historias
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <p>
+                            Soy Carolina Arenas Díaz, neurosicóloga clínica con especialización en población vulnerable 
+                            y trauma infantil. Durante años observé cómo los niños luchaban por expresar sus miedos 
+                            y ansiedades con palabras.
+                        </p>
+                        <p>
+                            Desarrollé <strong>NeuroCuentos</strong> combinando la evidencia científica sobre neuroplasticidad 
+                            infantil con la terapia narrativa. Cada cuento que creo es una intervención clínica diseñada 
+                            específicamente para el cerebro en desarrollo de tu hijo.
+                        </p>
+                        <p>
+                            He trabajado con cientos de familias en Colombia, México, Argentina y Chile, ayudando a niños 
+                            entre 3 y 7 años a procesar traumas, vencer miedos y desarrollar resiliencia emocional 
+                            a través de historias que son únicas como ellos.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="flex -space-x-2">
+                            <div class="w-10 h-10 rounded-full bg-brand-100 border-2 border-white flex items-center justify-center text-xs font-bold text-brand-700">CO</div>
+                            <div class="w-10 h-10 rounded-full bg-green-100 border-2 border-white flex items-center justify-center text-xs font-bold text-green-700">MX</div>
+                            <div class="w-10 h-10 rounded-full bg-blue-100 border-2 border-white flex items-center justify-center text-xs font-bold text-blue-700">AR</div>
+                            <div class="w-10 h-10 rounded-full bg-red-100 border-2 border-white flex items-center justify-center text-xs font-bold text-red-700">CL</div>
+                        </div>
+                        <p class="text-sm text-gray-600">Atendiendo familias en toda Latinoamérica</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 bg-gradient-to-r from-brand-600 to-coral-600 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl md:text-6xl font-serif font-bold mb-6">Cada niño merece dormir tranquilo</h2>
+            <p class="text-xl mb-8 text-brand-100">
+                No esperes más para darle a tu hijo las herramientas que necesita para procesar 
+                sus miedos y desarrollar resiliencia emocional.
+            </p>
+            <button onclick="scrollToCuestionario()" class="bg-white text-brand-700 px-10 py-5 rounded-full font-bold text-xl hover:shadow-2xl transition transform hover:scale-105">
+                Comenzar Ahora →
+            </button>
+            <p class="mt-6 text-sm text-brand-200">
+                Respuesta en menos de 24 horas • 100% personalizado • Entrega en 7 días
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 bg-gradient-to-br from-brand-500 to-coral-500 rounded-lg flex items-center justify-center font-bold">N</div>
+                    <span class="text-xl font-bold">NeuroCuentos</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Terapia narrativa neuropsicológica para niños de 3 a 7 años. 
+                    Transformando vidas a través del poder de las historias personalizadas.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold mb-4">Tratamientos</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Miedo a dormir</a></li>
+                    <li><a href="#" class="hover:text-white transition">Enuresis</a></li>
+                    <li><a href="#" class="hover:text-white transition">Ansiedad por separación</a></li>
+                    <li><a href="#" class="hover:text-white transition">Procesamiento de divorcio</a></li>
+                    <li><a href="#" class="hover:text-white transition">Enfermedades crónicas</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-bold mb-4">Contacto</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li class="flex items-center gap-2">
+                        <span>📧</span> hola@neurocuentos.co
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span>📱</span> WhatsApp: +57 300 123 4567
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span>🕐</span> Lunes a Viernes: 9am - 6pm (COL)
+                    </li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-bold mb-4">Síguenos</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition">IG</a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition">FB</a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition">TK</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+            <p>&copy; 2026 NeuroCuentos by Carolina Arenas Díaz. Todos los derechos reservados.</p>
+            <p class="mt-2">Terapia basada en evidencia científica • Neurosicología Clínica</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Quiz Navigation
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+            document.getElementById('current-step').textContent = currentStep;
+            
+            // Show/hide steps
+            document.querySelectorAll('.quiz-step').forEach((step) => {
+                const stepNum = parseInt(step.dataset.step);
+                if (stepNum === currentStep) {
+                    step.classList.remove('hidden');
+                } else {
+                    step.classList.add('hidden');
+                }
+            });
+
+            // Update step indicators
+            document.querySelectorAll('.step-indicator').forEach((ind) => {
+                const indStep = parseInt(ind.dataset.step);
+                if (indStep <= currentStep) {
+                    ind.classList.add('active');
+                } else {
+                    ind.classList.remove('active');
+                }
+            });
+
+            // Show/hide buttons
+            document.getElementById('prev-btn').classList.toggle('hidden', currentStep === 1);
+            
+            if (currentStep === totalSteps) {
+                document.getElementById('next-btn').classList.add('hidden');
+                document.getElementById('submit-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+                document.getElementById('submit-btn').classList.add('hidden');
+            }
+        }
+
+        function validateStep() {
+            const currentStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+            
+            if (currentStep === 1) {
+                const radio = currentStepEl.querySelector('input[type="radio"]:checked');
+                if (!radio) {
+                    alert('Por favor selecciona una situación');
+                    return false;
+                }
+            }
+            
+            if (currentStep === 3 || currentStep === 4) {
+                const required = currentStepEl.querySelectorAll('input[required], select[required], textarea[required]');
+                let valid = true;
+                required.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('border-red-400');
+                        valid = false;
+                    } else {
+                        field.classList.remove('border-red-400');
+                    }
+                });
+                
+                if (!valid) {
+                    alert('Por favor completa todos los campos requeridos');
+                    return false;
+                }
+            }
+
+            if (currentStep === 4) {
+                const privacy = document.getElementById('privacy');
+                if (!privacy.checked) {
+                    alert('Debes aceptar la política de privacidad para continuar');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function changeStep(direction) {
+            if (direction === 1 && !validateStep()) return;
+            
+            currentStep += direction;
+            if (currentStep < 1) currentStep = 1;
+            if (currentStep > totalSteps) currentStep = totalSteps;
+            
+            updateProgress();
+        }
+
+        // Quiz option selection
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                // Prevent triggering if clicking on input directly
+                if (e.target.tagName === 'INPUT') return;
+                
+                const input = this.querySelector('input');
+                if (input.type === 'radio') {
+                    // Remove selected from all in group
+                    const name = input.name;
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                        radio.closest('.quiz-option').classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    input.checked = true;
+                } else if (input.type === 'checkbox') {
+                    this.classList.toggle('selected');
+                    input.checked = !input.checked;
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('neurocuestionario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateStep()) return;
+
+            // Collect data
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Handle multiple checkboxes
+            const personajes = [];
+            formData.forEach((value, key) => {
+                if (key === 'personajes') {
+                    personajes.push(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+            if (personajes.length > 0) {
+                data['personajes'] = personajes;
+            }
+
+            console.log('Datos del cuestionario:', data);
+            
+            // Here you would send to your backend or email service
+            // For now, show success message
+            alert(`¡Gracias ${data['nombre-padre']}! Hemos recibido la información sobre ${data['nombre-nino']}. En menos de 24 horas recibirás una propuesta personalizada en tu correo: ${data.email}`);
+            
+            // Reset form
+            this.reset();
+            currentStep = 1;
+            updateProgress();
+            document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+        });
+
+        function scrollToCuestionario() {
+            document.getElementById('cuestionario').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // GSAP Animations
+        if (typeof gsap !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from('.feature-card', {
+                scrollTrigger: {
+                    trigger: '#dolores',
+                    start: 'top 80%',
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1
+            });
+
+            gsap.from('.price-card', {
+                scrollTrigger: {
+                    trigger: '#paquetes',
+                    start: 'top 80%',
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2
+            });
+        }
+    </script>
+</body>
+</html>
