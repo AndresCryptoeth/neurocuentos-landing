@@ -3,1360 +3,1542 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuroCuentos | Terapia Narrativa Neuropsicológica para Niños - Carolina Arenas Díaz</title>
-    <meta name="description" content="Terapia mediante cuentos personalizados creados por neurosicóloga clínica. Especializada en trauma agudo, duelo, ansiedad y regulación emocional infantil. Entrega en 7 días a todo Latinoamérica.">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NeuroCuentos | Terapia Narrativa Neuropsicológica para Niños</title>
+    <meta name="description" content="Cuento terapéutico personalizado creado por Carolina Arenas Díaz, neurosicóloga clínica especializada en trauma infantil, duelo y regulación emocional.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff', 100: '#e0f2fe', 500: '#0ea5e9',
-                            600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e',
-                        },
-                        coral: { 50: '#fff1f2', 100: '#ffe4e6', 500: '#f43f5e', 600: '#e11d48' },
-                        sand: '#faf9f6',
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #faf9f6; }
-        .text-gradient {
-            background: linear-gradient(135deg, #0c4a6e 0%, #e11d48 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #5a6c7d;
+            --color-accent: #f4a261;
+            --color-accent-dark: #e76f51;
+            --color-bg: #faf8f5;
+            --color-bg-warm: #f5f0e8;
+            --color-white: #ffffff;
+            --color-text: #2d3748;
+            --color-muted: #718096;
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-medium: 0 8px 30px rgba(0,0,0,0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background: var(--color-bg);
+            overflow-x: hidden;
         }
-        .neuron-bg {
-            background-image: radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.1) 0%, transparent 50%);
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
-        .quiz-option { transition: all 0.3s ease; }
-        .quiz-option:hover {
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-warm) 100%);
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(244,162,97,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--color-accent-dark);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.25rem;
+            color: var(--color-secondary);
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .hero-text p {
+            color: var(--color-muted);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--color-muted);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            object-fit: cover;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--color-white);
+            padding: 20px 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            max-width: 280px;
+        }
+
+        .hero-badge h4 {
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .hero-badge p {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            color: var(--color-white);
+            box-shadow: 0 4px 15px rgba(244, 162, 97, 0.4);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(244, 162, 97, 0.5);
         }
-        .quiz-option.selected {
-            border-color: #0ea5e9;
-            background-color: #f0f9ff;
-            color: #0369a1;
+
+        /* ESPECIALIDADES SECTION - CORREGIDA */
+        .section-especialidades {
+            padding: 100px 0;
+            background: var(--color-bg-warm);
+            position: relative;
         }
-        .step-indicator.active {
-            background-color: #0ea5e9;
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            line-height: 1.6;
+        }
+
+        .especialidades-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .especialidad-card {
+            background: var(--color-white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid #f0e6d8;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .especialidad-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .especialidad-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .especialidad-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .especialidad-card.featured {
+            background: linear-gradient(135deg, #fff9f5 0%, var(--color-white) 100%);
+            border: 2px solid var(--color-accent);
+        }
+
+        .especialidad-card.featured::after {
+            content: "Más solicitado";
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--color-accent);
+            color: white;
+            padding: 4px 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 10px rgba(244, 162, 97, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .especialidad-card h3 {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card-description {
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .card-benefits li {
+            padding: 6px 0;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 24px;
+            line-height: 1.4;
+        }
+
+        .card-benefits li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .card-ejemplos {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid #f0e6d8;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .card-ejemplos span {
+            font-size: 0.85rem;
+            color: #8b7355;
+            font-style: italic;
+            background: var(--color-bg);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .section-footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .neuro-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* BASE NEUROPSICOLOGICA */
+        .section-neuro {
+            padding: 100px 0;
+            background: var(--color-white);
+        }
+
+        .neuro-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .neuro-item {
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            background: var(--color-bg);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .neuro-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .neuro-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        .neuro-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .neuro-content p {
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .neuro-quote {
+            margin-top: 60px;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--color-bg-warm) 0%, var(--color-bg) 100%);
+            border-radius: 20px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .neuro-quote blockquote {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .neuro-quote cite {
+            color: var(--color-accent-dark);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* PROCESO */
+        .section-proceso {
+            padding: 100px 0;
+            background: var(--color-bg-warm);
+        }
+
+        .proceso-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .proceso-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+            z-index: 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--color-white);
+            border: 3px solid var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            margin: 0 auto 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .step h4 {
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .step p {
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* PRECIOS */
+        .section-precios {
+            padding: 100px 0;
+            background: var(--color-white);
+        }
+
+        .precios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+
+        .precio-card {
+            background: var(--color-white);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .precio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .precio-card.recommended {
+            border-color: var(--color-accent);
+            background: linear-gradient(135deg, #fff9f5 0%, var(--color-white) 100%);
+        }
+
+        .precio-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .precio-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .precio-header h3 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .precio-header .precio {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .precio-header .precio span {
+            font-size: 1rem;
+            color: var(--color-muted);
+            font-weight: 400;
+        }
+
+        .precio-header p {
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .precio-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .precio-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0e6d8;
+            color: var(--color-text);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .precio-features li::before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .precio-features li strong {
+            color: var(--color-primary);
+        }
+
+        .precio-cta {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .precio-note {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--color-secondary);
+        }
+
+        .precio-note a {
+            color: var(--color-accent-dark);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* EVALUACION */
+        .section-evaluacion {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1a202c 100%);
             color: white;
         }
-        .price-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .section-evaluacion .section-header h2 {
+            color: white;
         }
-        .price-card:hover {
+
+        .section-evaluacion .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .evaluacion-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .evaluacion-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+        }
+
+        .evaluacion-item:hover {
+            background: rgba(255,255,255,0.2);
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        .specialty-card {
+
+        .evaluacion-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .evaluacion-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .evaluacion-item p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+
+        /* TESTIMONIOS */
+        .section-testimonios {
+            padding: 100px 0;
+            background: var(--color-bg-warm);
+        }
+
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonio-card {
+            background: var(--color-white);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .testimonio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .testimonio-stars {
+            color: #f6ad55;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonio-text {
+            color: var(--color-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonio-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .author-info h5 {
+            color: var(--color-primary);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: var(--color-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ABOUT */
+        .section-about {
+            padding: 100px 0;
+            background: var(--color-white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: 30px;
+            right: -20px;
+            background: var(--color-white);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .about-badge .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            display: block;
+        }
+
+        .about-badge p {
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .about-text h3 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            color: var(--color-secondary);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--color-primary);
+        }
+
+        /* CTA FINAL */
+        .section-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--color-bg-warm) 0%, var(--color-bg) 100%);
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+
+        .cta-content > p {
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            margin-top: 40px;
+        }
+
+        .btn-whatsapp-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            border: 2px solid transparent;
+        }
+
+        .btn-whatsapp-main:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.6);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .btn-whatsapp-main svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .response-info {
+            margin-top: 20px;
+            color: var(--color-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .response-info span {
+            color: #25D366;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            text-decoration: none;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 6px 35px rgba(37, 211, 102, 0.8); }
+            100% { box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 8px 40px rgba(37, 211, 102, 0.7);
+        }
+
+        .whatsapp-float svg {
+            width: 34px;
+            height: 34px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 75px;
+            background: var(--color-primary);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .specialty-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+
+        .whatsapp-tooltip::after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 8px 0 8px 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--color-primary);
         }
-        .metaphor-tag {
-            transition: all 0.2s ease;
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            right: 80px;
         }
-        .metaphor-tag:hover {
-            transform: scale(1.05);
+
+        /* FOOTER */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-badge {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .especialidades-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .neuro-grid,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .proceso-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .proceso-steps::before {
+                display: none;
+            }
+
+            .precios-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .testimonios-grid,
+            .evaluacion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .especialidades-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .especialidad-card {
+                min-height: auto;
+            }
+
+            .btn-whatsapp-main {
+                padding: 18px 32px;
+                font-size: 1.1rem;
+                width: 90%;
+                justify-content: center;
+            }
+
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .whatsapp-tooltip {
+                display: none;
+            }
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
+<body>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-brand-600 to-coral-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">N</div>
-                    <div>
-                        <span class="text-2xl font-bold text-brand-900 tracking-tight">NeuroCuentos</span>
-                        <span class="hidden sm:block text-xs text-gray-500 font-medium">Carolina Arenas Díaz</span>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>NeuroCuentos</h1>
+                    <p class="subtitle">Carolina Arenas Díaz</p>
+                    <p class="tagline">Neurosicología Clínica + Narrativa Terapéutica</p>
+                    <h2>Cuando el cerebro de tu hijo necesita sanar en su propio lenguaje</h2>
+                    <p>Terapia narrativa personalizada creada por <strong>Carolina Arenas Díaz</strong>, neurosicóloga clínica especializada en trauma infantil, duelo y regulación emocional. Cada cuento es una intervención clínica diseñada para integrar memorias, reducir hipervigilancia y reconstruir seguridad.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">+200</span>
+                            <span class="stat-label">familias transformadas</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Colombia, México, Argentina, Chile, Perú</span>
+                        </div>
                     </div>
+
+                    <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20vi%20tu%20página%20de%20NeuroCuentos%20y%20quiero%20consultarte%20sobre%20mi%20hijo/a" target="_blank" class="btn btn-primary">
+                        Agendar consulta gratuita
+                    </a>
                 </div>
-                
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#especialidades" class="text-gray-600 hover:text-brand-600 font-medium transition">Especialidades</a>
-                    <a href="#como-funciona" class="text-gray-600 hover:text-brand-600 font-medium transition">Cómo Funciona</a>
-                    <a href="#neurociencia" class="text-gray-600 hover:text-brand-600 font-medium transition">Neurociencia</a>
-                    <a href="#paquetes" class="text-gray-600 hover:text-brand-600 font-medium transition">Paquetes</a>
-                </div>
-
-                <button onclick="scrollToCuestionario()" class="bg-brand-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                    Comenzar Ahora
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center neuron-bg pt-20 overflow-hidden">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div class="absolute bottom-20 right-10 w-72 h-72 bg-coral-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-sm font-semibold border border-brand-100">
-                    <span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>
-                    Neurosicología Clínica + Narrativa Terapéutica
-                </div>
-                
-                <h1 class="text-5xl lg:text-7xl font-serif font-bold leading-tight text-gray-900">
-                    Cuando el cerebro de tu hijo necesita <span class="text-gradient">sanar en su propio lenguaje</span>
-                </h1>
-                
-                <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
-                    Terapia narrativa personalizada creada por <strong>Carolina Arenas Díaz</strong>, neurosicóloga clínica especializada en trauma infantil, duelo y regulación emocional. 
-                    Cada cuento es una intervención clínica diseñada para integrar memorias, reducir hipervigilancia y reconstruir seguridad.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="scrollToCuestionario()" class="bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-700 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                        Crear Su Cuento Terapéutico
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                    </button>
-                    <button onclick="document.getElementById('especialidades').scrollIntoView({behavior: 'smooth'})" class="bg-white text-brand-700 border-2 border-brand-100 px-8 py-4 rounded-full font-bold text-lg hover:border-brand-300 transition">
-                        Ver Especialidades
-                    </button>
-                </div>
-
-                <div class="flex items-center gap-6 pt-4">
-                    <div class="flex -space-x-3">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 border-3 border-white flex items-center justify-center text-lg">👦</div>
-                        <div class="w-12 h-12 rounded-full bg-pink-100 border-3 border-white flex items-center justify-center text-lg">👧</div>
-                        <div class="w-12 h-12 rounded-full bg-yellow-100 border-3 border-white flex items-center justify-center text-lg">👶</div>
-                    </div>
-                    <div>
-                        <p class="font-semibold text-gray-900">+200 familias transformadas</p>
-                        <p class="text-sm text-gray-500">Colombia, México, Argentina, Chile, Perú</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative">
-                <div class="float-animation">
-                    <div class="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
-                        <div class="absolute -top-4 -right-4 bg-coral-500 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                            Caso Real
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-brand-50 to-coral-50 rounded-2xl p-8 mb-6 aspect-square flex items-center justify-center relative overflow-hidden">
-                            <div class="absolute inset-0 opacity-20">
-                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="#0EA5E9" d="M47.5,-57.2C59.9,-46.6,67.3,-30.8,69.4,-14.8C71.5,1.2,68.3,17.4,59.9,30.8C51.5,44.2,37.9,54.8,22.5,61.3C7.1,67.8,-10.1,70.2,-25.8,65.8C-41.5,61.4,-55.7,50.2,-64.3,35.7C-72.9,21.2,-75.9,3.4,-71.6,-12.2C-67.3,-27.8,-55.7,-41.2,-42.2,-51.5C-28.7,-61.8,-13.3,-69,1.8,-71.1C16.9,-73.2,33.8,-70.2,47.5,-57.2Z" transform="translate(100 100)" />
-                                </svg>
-                            </div>
-                            <div class="text-center relative z-10">
-                                <div class="text-6xl mb-4">🏰</div>
-                                <h3 class="font-serif text-2xl font-bold text-brand-900 mb-2">"El Castillo que Tembló pero Siguió en Pie"</h3>
-                                <p class="text-brand-700 font-medium">Creado para Lucas, 5 años</p>
-                                <div class="mt-4 flex justify-center gap-2 flex-wrap">
-                                    <span class="px-3 py-1 bg-white/80 rounded-full text-xs font-medium text-brand-700">Trauma: Sismo</span>
-                                    <span class="px-3 py-1 bg-white/80 rounded-full text-xs font-medium text-coral-600">Hipervigilancia</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 text-sm text-gray-600">
-                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">✓</div>
-                                <span>Integración de memoria sensorial fragmentada</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm text-gray-600">
-                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">✓</div>
-                                <span>Regulación del sistema nervioso</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm text-gray-600">
-                                <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">✓</div>
-                                <span>Reconstrucción de seguridad básica</span>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 pt-6 border-t border-gray-100">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
-                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Carolina" alt="Carolina Arenas" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="text-xs">
-                                        <p class="font-semibold text-gray-900">Carolina Arenas Díaz</p>
-                                        <p class="text-gray-500">Neurosicóloga Clínica</p>
-                                    </div>
-                                </div>
-                                <span class="text-brand-600 font-bold text-sm">Resultado en 3 semanas</span>
-                            </div>
-                        </div>
+                <div class="hero-image">
+                    <img src="https://kimi-web-img.moonshot.cn/prod-data/online-image/search-upload/d56f6e0f1ba3d64e179d55d54b207e22" alt="Carolina Arenas Díaz - Neurosicóloga Clínica">
+                    <div class="hero-badge">
+                        <h4>Caso Real</h4>
+                        <p>✓ Integración de memoria sensorial fragmentada<br>
+                        ✓ Regulación del sistema nervioso<br>
+                        ✓ Reconstrucción de seguridad básica<br><br>
+                        <strong>Resultado en 3 semanas</strong></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Specialties Section -->
-    <section id="especialidades" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
-                    Especialidades clínicas
-                </h2>
-                <p class="text-xl text-gray-600">
-                    Cada cuento es diseñado según el perfil neuropsicológico específico de tu hijo, 
-                    trabajando directamente sobre los sistemas cerebrales afectados.
-                </p>
+    <!-- ESPECIALIDADES -->
+    <section class="section-especialidades" id="especialidades">
+        <div class="container">
+            <div class="section-header">
+                <h2>Especialidades clínicas</h2>
+                <p class="section-subtitle">Cada cuento es diseñado según el perfil neuropsicológico específico de tu hijo, trabajando directamente sobre los sistemas cerebrales afectados.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Trauma Agudo -->
-                <div class="specialty-card bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-8 border border-red-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">⚡</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Trauma Agudo</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Accidentes, hospitalización, cirugías, mordidas, incendios, sismos, separación inesperada o muerte repentina.
-                    </p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-red-700">
-                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                            <span>Regulación del sistema nervioso</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-red-700">
-                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                            <span>Integración de memoria sensorial</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-red-700">
-                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                            <span>Reducción de hipervigilancia</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-red-700 border border-red-200">"El conejito y el trueno"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-red-700 border border-red-200">"El castillo que tembló"</span>
-                    </div>
-                </div>
-
-                <!-- Duelo Infantil -->
-                <div class="specialty-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl p-8 border border-purple-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">💔</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Duelo y Pérdidas</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Muerte de abuelos o mascotas, separación de padres, mudanza, cambio de colegio. Comprensión concreta de la ausencia.
-                    </p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-purple-700">
-                            <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                            <span>Tolerancia a la ausencia</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-purple-700">
-                            <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                            <span>Regulación emocional básica</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-purple-700">
-                            <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                            <span>Procesamiento simbólico</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-purple-700 border border-purple-200">"Estrellas que brillan lejos"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-purple-700 border border-purple-200">"Árboles y estaciones"</span>
-                    </div>
-                </div>
-
-                <!-- Trauma Relacional -->
-                <div class="specialty-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 border border-blue-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">🏠</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Trauma Relacional</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Gritos constantes, conflictos parentales, divorcio conflictivo, cambios de cuidador, padres emocionalmente ausentes.
-                    </p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-blue-700">
-                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                            <span>Reparación de apego inseguro</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-blue-700">
-                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                            <span>Reducción de activación de amígdala</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-blue-700">
-                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                            <span>Seguridad emocional</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-blue-700 border border-blue-200">"El osito y mamá"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-blue-700 border border-blue-200">"Hogar con tormentas"</span>
-                    </div>
-                </div>
-
-                <!-- Ansiedad y Miedos -->
-                <div class="specialty-card bg-gradient-to-br from-yellow-50 to-amber-50 rounded-3xl p-8 border border-yellow-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">😨</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Ansiedad y Miedos Intensos</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Oscuridad, monstruos, dormir solos, separación, ir al colegio, ruidos fuertes. Reentrenamiento de respuestas de alarma.
-                    </p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-yellow-700">
-                            <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
-                            <span>Regulación autonómica</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-yellow-700">
-                            <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
-                            <span>Construcción de control</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-yellow-700">
-                            <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
-                            <span>Extinción de miedos</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-yellow-700 border border-yellow-200">"El monstruo y el abrazo"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-yellow-700 border border-yellow-200">"Linterna mágica interna"</span>
-                    </div>
-                </div>
-
-                <!-- Regresiones -->
-                <div class="specialty-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 border border-green-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">👶</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Regresiones Conductuales</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Enuresis, hablar como bebé, rabietas intensas, problemas de sueño, apego excesivo. Búsqueda de seguridad.
-                    </p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-green-700">
-                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                            <span>Restauración de seguridad</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-green-700">
-                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                            <span>Validación emocional</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-green-700">
-                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                            <span>Reestablecimiento de rutinas</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-green-700 border border-green-200">"Volver a ser pequeño"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-green-700 border border-green-200">"El nido protector"</span>
-                    </div>
-                </div>
-
-                <!-- Desregulación Emocional -->
-                <div class="specialty-card bg-gradient-to-br from-orange-50 to-red-50 rounded-3xl p-8 border border-orange-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">😡</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Desregulación Emocional</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Golpes, mordidas, ira desproporcionada, frustración intensa. Corteza prefrontal inmadura, baja tolerancia.
-                    </p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-sm text-orange-700">
-                            <span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
-                            <span>Desarrollo de funciones ejecutivas</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-orange-700">
-                            <span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
-                            <span>Regulación de impulsos</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-orange-700">
-                            <span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
-                            <span>Estrategias de calmación</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-orange-700 border border-orange-200">"El dragón y su fuego"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-orange-700 border border-orange-200">"El volcán respira"</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional specialties row -->
-            <div class="grid md:grid-cols-3 gap-8 mt-8">
-                <!-- Autoestima -->
-                <div class="specialty-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-8 border border-pink-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">🌸</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Autoestima y Autoimagen</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Comparaciones, críticas, bullying temprano, no sentirse suficiente.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-pink-700 border border-pink-200">"Flor diferente"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-pink-700 border border-pink-200">"Pez que trepaba"</span>
-                    </div>
-                </div>
-
-                <!-- Altamente Sensibles -->
-                <div class="specialty-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-3xl p-8 border border-teal-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">🦋</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Niños Altamente Sensibles</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Sobreestimulación, hiperreactividad, llanto frecuente, sensibilidad extrema.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-teal-700 border border-teal-200">"Niño con antenas"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-teal-700 border border-teal-200">"Corazón grande"</span>
-                    </div>
-                </div>
-
-                <!-- Cambios -->
-                <div class="specialty-card bg-gradient-to-br from-indigo-50 to-violet-50 rounded-3xl p-8 border border-indigo-100">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-6">🌪</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cambios Importantes</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Mudanza, nacimiento de hermano, nueva pareja parental, cambio de colegio.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-indigo-700 border border-indigo-200">"Flexibilidad"</span>
-                        <span class="metaphor-tag px-3 py-1 bg-white/80 rounded-full text-xs text-indigo-700 border border-indigo-200">"Adaptación"</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Neuroscience Base Section -->
-    <section id="neurociencia" class="py-24 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white text-brand-700 rounded-full text-sm font-semibold shadow-sm mb-6">
-                        <span>🧠</span> Base Neuropsicológica
-                    </div>
-                    <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
-                        ¿Por qué entre los 3 y 7 años los cuentos son medicina?
-                    </h2>
-                    
-                    <div class="space-y-6">
-                        <div class="bg-white rounded-2xl p-6 shadow-sm">
-                            <h3 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
-                                <span class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600">1</span>
-                                Pensamiento Simbólico Predominante
-                            </h3>
-                            <p class="text-gray-600 text-sm">
-                                El cerebro infantil procesa mejor metáforas que explicaciones racionales. 
-                                Un dragón que tiene miedo es más efectivo que decir "no tengas miedo".
-                            </p>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-6 shadow-sm">
-                            <h3 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
-                                <span class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600">2</span>
-                                Memoria Emocional > Memoria Narrativa
-                            </h3>
-                            <p class="text-gray-600 text-sm">
-                                Las experiencias traumáticas se almacenan como sensaciones fragmentadas. 
-                                Los cuentos permiten <strong>reconsolidar</strong> esas memorias de forma segura.
-                            </p>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-6 shadow-sm">
-                            <h3 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
-                                <span class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600">3</span>
-                                Neuroplasticidad Óptima
-                            </h3>
-                            <p class="text-gray-600 text-sm">
-                                El cerebro está en su pico de capacidad de cambio. Las historias crean 
-                                nuevas redes neuronales de regulación que persisten en el tiempo.
-                            </p>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-6 shadow-sm">
-                            <h3 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
-                                <span class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600">4</span>
-                                Activación de Redes de Regulación
-                            </h3>
-                            <p class="text-gray-600 text-sm">
-                                La narrativa activa áreas cerebrales asociadas con el autocontrol, 
-                                reduciendo la hiperactivación de la amígdala (centro del miedo).
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="bg-white rounded-3xl shadow-xl p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Lo que logramos con cada cuento</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 flex-shrink-0">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Reconsolidación de Memoria Traumática</h4>
-                                    <p class="text-sm text-gray-600">Transformar recuerdos dolorosos en narrativas integradas</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 flex-shrink-0">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Disminución de Activación Límbica</h4>
-                                    <p class="text-sm text-gray-600">Reducir la "alarma constante" del sistema nervioso</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 flex-shrink-0">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Integración Emocional Segura</h4>
-                                    <p class="text-sm text-gray-600">Procesar sentimientos sin sentirse abrumado</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 flex-shrink-0">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Desarrollo de Funciones Ejecutivas</h4>
-                                    <p class="text-sm text-gray-600">Atención, inhibición y flexibilidad mental</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 flex-shrink-0">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Fortalecimiento del Apego Seguro</h4>
-                                    <p class="text-sm text-gray-600">Reparar vínculos y construir confianza básica</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 p-6 bg-brand-50 rounded-2xl border-l-4 border-brand-500">
-                            <p class="text-brand-800 italic text-sm leading-relaxed">
-                                "El cerebro infantil integra mejor imágenes y historias que explicaciones racionales. 
-                                Por eso un cuento personalizado puede lograr lo que la conversación directa no alcanza."
-                            </p>
-                            <p class="text-xs text-brand-600 mt-2 font-semibold">— Fundamento neuropsicológico de la cuentoterapia</p>
-                        </div>
-                    </div>
-                    
-                    <div class="absolute -z-10 -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-brand-200 to-coral-200 rounded-3xl"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How it Works -->
-    <section id="como-funciona" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">De la evaluación neuropsicológica al cuento terapéutico</h2>
-                <p class="text-xl text-gray-600">Un proceso clínico riguroso con toque mágico</p>
-            </div>
-
-            <div class="grid md:grid-cols-5 gap-8 mb-16">
-                <div class="relative text-center">
-                    <div class="w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center text-2xl font-bold text-brand-700 mx-auto mb-4 border-4 border-white shadow-lg">1</div>
-                    <h3 class="font-bold text-gray-900 mb-2">Evaluación Clínica</h3>
-                    <p class="text-sm text-gray-600">Cuestionario neuropsicológico sobre el trauma o desafío específico</p>
-                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
-                </div>
-
-                <div class="relative text-center">
-                    <div class="w-20 h-20 bg-brand-200 rounded-full flex items-center justify-center text-2xl font-bold text-brand-700 mx-auto mb-4 border-4 border-white shadow-lg">2</div>
-                    <h3 class="font-bold text-gray-900 mb-2">Diseño de Personajes</h3>
-                    <p class="text-sm text-gray-600">Creación de protagonistas que representan neuropsicológicamente a tu hijo</p>
-                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
-                </div>
-
-                <div class="relative text-center">
-                    <div class="w-20 h-20 bg-brand-300 rounded-full flex items-center justify-center text-2xl font-bold text-brand-800 mx-auto mb-4 border-4 border-white shadow-lg">3</div>
-                    <h3 class="font-bold text-gray-900 mb-2">Estructura Terapéutica</h3>
-                    <p class="text-sm text-gray-600">Arco narrativo diseñado para activar redes de regulación cerebral</p>
-                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
-                </div>
-
-                <div class="relative text-center">
-                    <div class="w-20 h-20 bg-coral-200 rounded-full flex items-center justify-center text-2xl font-bold text-coral-700 mx-auto mb-4 border-4 border-white shadow-lg">4</div>
-                    <h3 class="font-bold text-gray-900 mb-2">Creación del Cuento</h3>
-                    <p class="text-sm text-gray-600">Libro físico ilustrado + Digital + Audio narrado profesionalmente</p>
-                    <div class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-brand-200"></div>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-coral-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-4 border-white shadow-lg">5</div>
-                    <h3 class="font-bold text-gray-900 mb-2">Guía Parental</h3>
-                    <p class="text-sm text-gray-600">Instrucciones específicas sobre cómo utilizar el cuento terapéuticamente</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Packages Section -->
-    <section id="paquetes" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">Inversión en el bienestar neuropsicológico de tu hijo</h2>
-                <p class="text-xl text-gray-600">Intervención clínica especializada, no solo un cuento bonito</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Basic Package -->
-                <div class="price-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative">
-                    <div class="absolute top-0 right-0 bg-gray-100 text-gray-600 px-4 py-1 rounded-bl-2xl rounded-tr-3xl text-sm font-semibold">
-                        Intervención Base
-                    </div>
-                    
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Paquete Esencial</h3>
-                    <p class="text-gray-600 mb-6">Cuento terapéutico personalizado con fundamentos neuropsicológicos</p>
-                    
-                    <div class="mb-6">
-                        <span class="text-5xl font-bold text-gray-900">$77</span>
-                        <span class="text-gray-500">USD</span>
-                        <p class="text-sm text-gray-500 mt-1">Envío nacional incluido • Internacional +$22</p>
-                    </div>
-
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-gray-700"><strong>Evaluación neuropsicológica</strong> mediante cuestionario especializado</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-gray-700"><strong>Cuento físico personalizado</strong> (24-32 páginas, tapa dura de calidad)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-gray-700"><strong>Versión digital interactiva</strong> (PDF para tablet o computadora)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-gray-700"><strong>Audio narrado</strong> por voz profesional (15-20 minutos)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-gray-700"><strong>Guía para padres</strong> sobre uso terapéutico del cuento</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-gray-700">Entrega en <strong>7 días hábiles</strong></span>
-                        </li>
+            <div class="especialidades-grid">
+                <div class="especialidad-card featured">
+                    <span class="card-icon">⚡</span>
+                    <h3>Trauma Agudo</h3>
+                    <p class="card-description">Accidentes, hospitalización, cirugías, mordidas, incendios, sismos, separación inesperada o muerte repentina.</p>
+                    <ul class="card-benefits">
+                        <li>Regulación del sistema nervioso</li>
+                        <li>Integración de memoria sensorial</li>
+                        <li>Reducción de hipervigilancia</li>
                     </ul>
-
-                    <button onclick="scrollToCuestionario()" class="w-full py-4 rounded-full border-2 border-brand-600 text-brand-600 font-bold hover:bg-brand-50 transition">
-                        Seleccionar Esencial
-                    </button>
+                    <div class="card-ejemplos">
+                        <span>"El conejito y el trueno"</span>
+                        <span>"El castillo que tembló"</span>
+                    </div>
                 </div>
 
-                <!-- Premium Package -->
-                <div class="price-card bg-gradient-to-br from-brand-600 to-brand-800 rounded-3xl p-8 shadow-2xl text-white relative transform md:scale-105">
-                    <div class="absolute top-0 right-0 bg-coral-500 text-white px-4 py-1 rounded-bl-2xl rounded-tr-3xl text-sm font-bold">
-                        Recomendado
-                    </div>
-                    
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                        ⚡ Mayor impacto clínico
-                    </div>
-
-                    <h3 class="text-2xl font-bold mb-2">Paquete Acompañamiento</h3>
-                    <p class="text-brand-100 mb-6">Intervención completa con seguimiento neuropsicológico profesional</p>
-                    
-                    <div class="mb-6">
-                        <span class="text-5xl font-bold">$249</span>
-                        <span class="text-brand-200">USD</span>
-                        <p class="text-sm text-brand-200 mt-1">Todo incluido • Sesiones virtuas • 3 meses de seguimiento</p>
-                    </div>
-
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong>TODO lo del paquete Esencial</strong></span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong>Sesión inicial</strong> con Carolina (evaluación profunda, 45 min)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong>Sesión intermedia</strong> (ajustes terapéuticos, 30 min)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong>Sesión final</strong> (evaluación de resultados, 30 min)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong>Chat de apoyo</strong> durante 3 meses (respuesta 24h)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span>Informe de progreso para <strong>colegio o pediatra</strong></span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span>Segundo cuento de refuerzo si es necesario</span>
-                        </li>
+                <div class="especialidad-card">
+                    <span class="card-icon">💔</span>
+                    <h3>Duelo y Pérdidas</h3>
+                    <p class="card-description">Muerte de abuelos o mascotas, separación de padres, mudanza, cambio de colegio. Comprensión concreta de la ausencia.</p>
+                    <ul class="card-benefits">
+                        <li>Tolerancia a la ausencia</li>
+                        <li>Regulación emocional básica</li>
+                        <li>Procesamiento simbólico</li>
                     </ul>
+                    <div class="card-ejemplos">
+                        <span>"Estrellas que brillan lejos"</span>
+                        <span>"Árboles y estaciones"</span>
+                    </div>
+                </div>
 
-                    <button onclick="scrollToCuestionario()" class="w-full py-4 rounded-full bg-white text-brand-800 font-bold hover:bg-gray-100 transition shadow-lg">
-                        Seleccionar Acompañamiento
-                    </button>
+                <div class="especialidad-card">
+                    <span class="card-icon">🏠</span>
+                    <h3>Trauma Relacional</h3>
+                    <p class="card-description">Gritos constantes, conflictos parentales, divorcio conflictivo, cambios de cuidador, padres emocionalmente ausentes.</p>
+                    <ul class="card-benefits">
+                        <li>Reparación de apego inseguro</li>
+                        <li>Reducción de activación de amígdala</li>
+                        <li>Seguridad emocional</li>
+                    </ul>
+                    <div class="card-ejemplos">
+                        <span>"El osito y mamá"</span>
+                        <span>"Hogar con tormentas"</span>
+                    </div>
+                </div>
+
+                <div class="especialidad-card">
+                    <span class="card-icon">😨</span>
+                    <h3>Ansiedad y Miedos Intensos</h3>
+                    <p class="card-description">Oscuridad, monstruos, dormir solos, separación, ir al colegio, ruidos fuertes. Reentrenamiento de respuestas de alarma.</p>
+                    <ul class="card-benefits">
+                        <li>Regulación autonómica</li>
+                        <li>Construcción de control</li>
+                        <li>Extinción de miedos</li>
+                    </ul>
+                    <div class="card-ejemplos">
+                        <span>"El monstruo y el abrazo"</span>
+                        <span>"Linterna mágica interna"</span>
+                    </div>
+                </div>
+
+                <div class="especialidad-card">
+                    <span class="card-icon">👶</span>
+                    <h3>Regresiones Conductuales</h3>
+                    <p class="card-description">Enuresis, hablar como bebé, rabietas intensas, problemas de sueño, apego excesivo. Búsqueda de seguridad.</p>
+                    <ul class="card-benefits">
+                        <li>Restauración de seguridad</li>
+                        <li>Validación emocional</li>
+                        <li>Reestablecimiento de rutinas</li>
+                    </ul>
+                    <div class="card-ejemplos">
+                        <span>"Volver a ser pequeño"</span>
+                        <span>"El nido protector"</span>
+                    </div>
+                </div>
+
+                <div class="especialidad-card">
+                    <span class="card-icon">😡</span>
+                    <h3>Desregulación Emocional</h3>
+                    <p class="card-description">Golpes, mordidas, ira desproporcionada, frustración intensa. Corteza prefrontal inmadura, baja tolerancia.</p>
+                    <ul class="card-benefits">
+                        <li>Desarrollo de funciones ejecutivas</li>
+                        <li>Regulación de impulsos</li>
+                        <li>Estrategias de calmación</li>
+                    </ul>
+                    <div class="card-ejemplos">
+                        <span>"El dragón y su fuego"</span>
+                        <span>"El volcán respira"</span>
+                    </div>
+                </div>
+
+                <div class="especialidad-card">
+                    <span class="card-icon">🌸</span>
+                    <h3>Autoestima y Autoimagen</h3>
+                    <p class="card-description">Comparaciones, críticas, bullying temprano, no sentirse suficiente.</p>
+                    <ul class="card-benefits">
+                        <li>Fortalecimiento de identidad</li>
+                        <li>Resiliencia emocional</li>
+                        <li>Autocompasión</li>
+                    </ul>
+                    <div class="card-ejemplos">
+                        <span>"Flor diferente"</span>
+                        <span>"Pez que trepaba"</span>
+                    </div>
+                </div>
+
+                <div class="especialidad-card">
+                    <span class="card-icon">🦋</span>
+                    <h3>Niños Altamente Sensibles</h3>
+                    <p class="card-description">Sobreestimulación, hiperreactividad, llanto frecuente, sensibilidad extrema.</p>
+                    <ul class="card-benefits">
+                        <li>Regulación sensorial</li>
+                        <li>Límites saludables</li>
+                        <li>Validación de sensibilidad</li>
+                    </ul>
+                    <div class="card-ejemplos">
+                        <span>"Niño con antenas"</span>
+                        <span>"Corazón grande"</span>
+                    </div>
+                </div>
+
+                <div class="especialidad-card">
+                    <span class="card-icon">🌪</span>
+                    <h3>Cambios Importantes</h3>
+                    <p class="card-description">Mudanza, nacimiento de hermano, nueva pareja parental, cambio de colegio.</p>
+                    <ul class="card-benefits">
+                        <li>Adaptación emocional</li>
+                        <li>Flexibilidad cognitiva</li>
+                        <li>Seguridad en transiciones</li>
+                    </ul>
+                    <div class="card-ejemplos">
+                        <span>"Flexibilidad"</span>
+                        <span>"Adaptación"</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="mt-12 text-center">
-                <p class="text-gray-600 mb-4">¿No sabes cuál elegir? Agenda una llamada gratuita de 15 minutos</p>
-                <a href="https://wa.me/573001234567" target="_blank" class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-800 transition">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    Escríbeme por WhatsApp
+            <div class="section-footer">
+                <span class="neuro-tag">🧠 Base Neuropsicológica</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BASE NEUROPSICOLOGICA -->
+    <section class="section-neuro">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué entre los 3 y 7 años los cuentos son medicina?</h2>
+            </div>
+
+            <div class="neuro-grid">
+                <div class="neuro-item">
+                    <span class="neuro-number">1</span>
+                    <div class="neuro-content">
+                        <h3>Pensamiento Simbólico Predominante</h3>
+                        <p>El cerebro infantil procesa mejor metáforas que explicaciones racionales. Un dragón que tiene miedo es más efectivo que decir "no tengas miedo".</p>
+                    </div>
+                </div>
+
+                <div class="neuro-item">
+                    <span class="neuro-number">2</span>
+                    <div class="neuro-content">
+                        <h3>Memoria Emocional > Memoria Narrativa</h3>
+                        <p>Las experiencias traumáticas se almacenan como sensaciones fragmentadas. Los cuentos permiten <strong>reconsolidar</strong> esas memorias de forma segura.</p>
+                    </div>
+                </div>
+
+                <div class="neuro-item">
+                    <span class="neuro-number">3</span>
+                    <div class="neuro-content">
+                        <h3>Neuroplasticidad Óptima</h3>
+                        <p>El cerebro está en su pico de capacidad de cambio. Las historias crean nuevas redes neuronales de regulación que persisten en el tiempo.</p>
+                    </div>
+                </div>
+
+                <div class="neuro-item">
+                    <span class="neuro-number">4</span>
+                    <div class="neuro-content">
+                        <h3>Activación de Redes de Regulación</h3>
+                        <p>La narrativa activa áreas cerebrales asociadas con el autocontrol, reduciendo la hiperactivación de la amígdala (centro del miedo).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="neuro-quote">
+                <blockquote>"El cerebro infantil integra mejor imágenes y historias que explicaciones racionales. Por eso un cuento personalizado puede lograr lo que la conversación directa no alcanza."</blockquote>
+                <cite>— Fundamento neuropsicológico de la cuentoterapia</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section-proceso">
+        <div class="container">
+            <div class="section-header">
+                <h2>De la evaluación neuropsicológica al cuento terapéutico</h2>
+                <p class="section-subtitle">Un proceso clínico riguroso con toque mágico</p>
+            </div>
+
+            <div class="proceso-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Evaluación Clínica</h4>
+                    <p>Cuestionario neuropsicológico sobre el trauma o desafío específico</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Diseño de Personajes</h4>
+                    <p>Creación de protagonistas que representan neuropsicológicamente a tu hijo</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Estructura Terapéutica</h4>
+                    <p>Arco narrativo diseñado para activar redes de regulación cerebral</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Creación del Cuento</h4>
+                    <p>Libro físico ilustrado + Digital + Audio narrado profesionalmente</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Guía Parental</h4>
+                    <p>Instrucciones específicas sobre cómo utilizar el cuento terapéuticamente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="section-precios" id="precios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Inversión en el bienestar neuropsicológico de tu hijo</h2>
+                <p class="section-subtitle">Intervención clínica especializada, no solo un cuento bonito</p>
+            </div>
+
+            <div class="precios-grid">
+                <div class="precio-card">
+                    <div class="precio-header">
+                        <h3>Paquete Esencial</h3>
+                        <div class="precio">$77<span>USD</span></div>
+                        <p>Envío nacional incluido • Internacional +$22</p>
+                    </div>
+                    <ul class="precio-features">
+                        <li><strong>Evaluación neuropsicológica</strong> mediante cuestionario especializado</li>
+                        <li><strong>Cuento físico personalizado</strong> (24-32 páginas, tapa dura de calidad)</li>
+                        <li><strong>Versión digital interactiva</strong> (PDF para tablet o computadora)</li>
+                        <li><strong>Audio narrado</strong> por voz profesional (15-20 minutos)</li>
+                        <li><strong>Guía para padres</strong> sobre uso terapéutico del cuento</li>
+                        <li>Entrega en <strong>7 días hábiles</strong></li>
+                    </ul>
+                    <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20quiero%20el%20Paquete%20Esencial%20por%20favor" target="_blank" class="btn btn-primary precio-cta">Elegir Paquete Esencial</a>
+                </div>
+
+                <div class="precio-card recommended">
+                    <span class="precio-badge">Recomendado</span>
+                    <div class="precio-header">
+                        <h3>Paquete Acompañamiento</h3>
+                        <div class="precio">$249<span>USD</span></div>
+                        <p>Todo incluido • Sesiones virtuales • 3 meses de seguimiento</p>
+                    </div>
+                    <ul class="precio-features">
+                        <li><strong>TODO lo del paquete Esencial</strong></li>
+                        <li><strong>Sesión inicial</strong> con Carolina (evaluación profunda, 45 min)</li>
+                        <li><strong>Sesión intermedia</strong> (ajustes terapéuticos, 30 min)</li>
+                        <li><strong>Sesión final</strong> (evaluación de resultados, 30 min)</li>
+                        <li><strong>Chat de apoyo</strong> durante 3 meses (respuesta 24h)</li>
+                        <li>Informe de progreso para <strong>colegio o pediatra</strong></li>
+                        <li>Segundo cuento de refuerzo si es necesario</li>
+                    </ul>
+                    <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20quiero%20el%20Paquete%20Acompañamiento%20por%20favor" target="_blank" class="btn btn-primary precio-cta">Elegir Acompañamiento</a>
+                </div>
+            </div>
+
+            <p class="precio-note">¿No sabes cuál elegir? <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20quiero%20agendar%20una%20llamada%20gratuita%20de%2015%20minutos" target="_blank">Agenda una llamada gratuita de 15 minutos</a></p>
+        </div>
+    </section>
+
+    <!-- EVALUACION -->
+    <section class="section-evaluacion">
+        <div class="container">
+            <div class="section-header">
+                <h2>Inicia la evaluación neuropsicológica</h2>
+                <p class="section-subtitle">Cuéntanos sobre tu pequeño para diseñar su intervención terapéutica</p>
+            </div>
+
+            <div class="evaluacion-grid">
+                <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20mi%20hijo%20tuvo%20un%20trauma%20agudo" target="_blank" class="evaluacion-item" style="text-decoration: none; color: inherit;">
+                    <span class="evaluacion-icon">⚡</span>
+                    <h4>Trauma Agudo</h4>
+                    <p>Accidente, hospitalización, sismo, pérdida repentina</p>
+                </a>
+
+                <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20mi%20hijo%20está%20pasando%20por%20un%20duelo" target="_blank" class="evaluacion-item" style="text-decoration: none; color: inherit;">
+                    <span class="evaluacion-icon">💔</span>
+                    <h4>Duelo o Pérdida</h4>
+                    <p>Muerte, separación, mudanza, cambio de colegio</p>
+                </a>
+
+                <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20mi%20hijo%20tiene%20miedos%20o%20ansiedad" target="_blank" class="evaluacion-item" style="text-decoration: none; color: inherit;">
+                    <span class="evaluacion-icon">😨</span>
+                    <h4>Miedos o Ansiedad</h4>
+                    <p>Oscuridad, dormir solo, separación, ir al colegio</p>
+                </a>
+
+                <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20mi%20hijo%20tiene%20regresiones" target="_blank" class="evaluacion-item" style="text-decoration: none; color: inherit;">
+                    <span class="evaluacion-icon">👶</span>
+                    <h4>Regresiones</h4>
+                    <p>Enuresis, hablar como bebé, rabietas, apego excesivo</p>
+                </a>
+
+                <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20mi%20hijo%20tiene%20problemas%20de%20ira" target="_blank" class="evaluacion-item" style="text-decoration: none; color: inherit;">
+                    <span class="evaluacion-icon">😡</span>
+                    <h4>Ira o Frustración</h4>
+                    <p>Golpes, mordidas, ira desproporcionada</p>
+                </a>
+
+                <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20tengo%20otra%20situación%20con%20mi%20hijo" target="_blank" class="evaluacion-item" style="text-decoration: none; color: inherit;">
+                    <span class="evaluacion-icon">🤔</span>
+                    <h4>Otro desafío</h4>
+                    <p>Autoestima, altamente sensible, cambios familiares</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Quiz Section -->
-    <section id="cuestionario" class="py-24 bg-gradient-to-br from-brand-900 via-brand-800 to-coral-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px); background-size: 50px 50px;"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl lg:text-5xl font-serif font-bold mb-6">Inicia la evaluación neuropsicológica</h2>
-                <p class="text-xl text-brand-100">Cuéntanos sobre tu pequeño para diseñar su intervención terapéutica</p>
+    <!-- TESTIMONIOS -->
+    <section class="section-testimonios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Historias de transformación real</h2>
+                <p class="section-subtitle">Familias que reconstruyeron seguridad emocional</p>
             </div>
 
-            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20">
-                <!-- Progress -->
-                <div class="mb-8">
-                    <div class="flex justify-between text-sm mb-2 text-brand-200">
-                        <span>Paso <span id="current-step">1</span> de 4</span>
-                        <span id="progress-text">25%</span>
-                    </div>
-                    <div class="w-full bg-white/20 rounded-full h-2">
-                        <div id="progress-bar" class="bg-gradient-to-r from-yellow-400 to-coral-400 h-2 rounded-full transition-all duration-500" style="width: 25%"></div>
+            <div class="testimonios-grid">
+                <div class="testimonio-card">
+                    <div class="testimonio-stars">★★★★★</div>
+                    <p class="testimonio-text">"Después del sismo, mi hijo tenía hipervigilancia constante. El cuento 'El Castillo que Tembló' integró su experiencia de forma segura. En 3 semanas durmió toda la noche."</p>
+                    <div class="testimonio-author">
+                        <div class="author-avatar">👩</div>
+                        <div class="author-info">
+                            <h5>Diana M.</h5>
+                            <p>Mamá de Lucas, 5 años • Ciudad de México</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Step indicators -->
-                <div class="flex justify-between mb-8">
-                    <div class="step-indicator active w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="1">1</div>
-                    <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="2">2</div>
-                    <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="3">3</div>
-                    <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-white/30" data-step="4">4</div>
+                <div class="testimonio-card">
+                    <div class="testimonio-stars">★★★★★</div>
+                    <p class="testimonio-text">"La enuresis de mi hija era por ansiedad de separación post-divorcio. Carolina diseñó un cuento que incluía a ambos papás como protectores. Dejó de hacerse pipí y volvió a sonreír."</p>
+                    <div class="testimonio-author">
+                        <div class="author-avatar">👨</div>
+                        <div class="author-info">
+                            <h5>Andrés P.</h5>
+                            <p>Papá de Valentina, 6 años • Bogotá</p>
+                        </div>
+                    </div>
                 </div>
 
-                <form id="neurocuestionario" class="space-y-8">
-                    <!-- Step 1: Problem -->
-                    <div class="quiz-step" data-step="1">
-                        <h3 class="text-2xl font-bold mb-6">¿Qué situación está afectando a tu hijo?</h3>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
-                                <input type="radio" name="situacion" value="trauma-agudo" class="hidden" required>
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">⚡</span>
-                                    <div>
-                                        <span class="font-medium block">Trauma Agudo</span>
-                                        <span class="text-xs text-white/70">Accidente, hospitalización, sismo, pérdida repentina</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
-                                <input type="radio" name="situacion" value="duelo" class="hidden">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">💔</span>
-                                    <div>
-                                        <span class="font-medium block">Duelo o Pérdida</span>
-                                        <span class="text-xs text-white/70">Muerte, separación, mudanza, cambio de colegio</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
-                                <input type="radio" name="situacion" value="miedos" class="hidden">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">😨</span>
-                                    <div>
-                                        <span class="font-medium block">Miedos o Ansiedad</span>
-                                        <span class="text-xs text-white/70">Oscuridad, dormir solo, separación, ir al colegio</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
-                                <input type="radio" name="situacion" value="regresiones" class="hidden">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">👶</span>
-                                    <div>
-                                        <span class="font-medium block">Regresiones</span>
-                                        <span class="text-xs text-white/70">Enuresis, hablar como bebé, rabietas, apego excesivo</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
-                                <input type="radio" name="situacion" value="ira" class="hidden">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">😡</span>
-                                    <div>
-                                        <span class="font-medium block">Ira o Frustración</span>
-                                        <span class="text-xs text-white/70">Golpes, mordidas, ira desproporcionada</span>
-                                    </div>
-                                </div>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer">
-                                <input type="radio" name="situacion" value="otro" class="hidden">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl">🤔</span>
-                                    <div>
-                                        <span class="font-medium block">Otro desafío</span>
-                                        <span class="text-xs text-white/70">Autoestima, altamente sensible, cambios familiares</span>
-                                    </div>
-                                </div>
-                            </label>
+                <div class="testimonio-card">
+                    <div class="testimonio-stars">★★★★★</div>
+                    <p class="testimonio-text">"Mi hijo es altamente sensible y las rabietas eran incontrolables. El cuento del 'Dragón que Aprendió a Usar su Fuego' le dio herramientas para regularse. Cambió nuestra vida familiar."</p>
+                    <div class="testimonio-author">
+                        <div class="author-avatar">👩</div>
+                        <div class="author-info">
+                            <h5>Camila R.</h5>
+                            <p>Mamá de Santiago, 4 años • Buenos Aires</p>
                         </div>
                     </div>
-
-                    <!-- Step 2: Characters -->
-                    <div class="quiz-step hidden" data-step="2">
-                        <h3 class="text-2xl font-bold mb-6">¿Qué personajes le fascinan? (Selecciona todos)</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="dragones" class="hidden">
-                                <div class="text-3xl mb-2">🐉</div>
-                                <span class="text-sm font-medium">Dragones</span>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="princesas" class="hidden">
-                                <div class="text-3xl mb-2">👸</div>
-                                <span class="text-sm font-medium">Princesas</span>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="superheroes" class="hidden">
-                                <div class="text-3xl mb-2">🦸</div>
-                                <span class="text-sm font-medium">Superhéroes</span>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="animales" class="hidden">
-                                <div class="text-3xl mb-2">🦁</div>
-                                <span class="text-sm font-medium">Animales</span>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="astronautas" class="hidden">
-                                <div class="text-3xl mb-2">🚀</div>
-                                <span class="text-sm font-medium">Astronautas</span>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="dinosaurios" class="hidden">
-                                <div class="text-3xl mb-2">🦕</div>
-                                <span class="text-sm font-medium">Dinosaurios</span>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="hadas" class="hidden">
-                                <div class="text-3xl mb-2">🧚</div>
-                                <span class="text-sm font-medium">Hadas/Magos</span>
-                            </label>
-                            <label class="quiz-option block p-4 rounded-xl border-2 border-white/30 bg-white/5 text-center cursor-pointer">
-                                <input type="checkbox" name="personajes" value="ninjas" class="hidden">
-                                <div class="text-3xl mb-2">🥷</div>
-                                <span class="text-sm font-medium">Ninjas</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Child Info -->
-                    <div class="quiz-step hidden" data-step="3">
-                        <h3 class="text-2xl font-bold mb-6">Cuéntanos sobre tu pequeño</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm mb-2 text-brand-200">Nombre del niño/a *</label>
-                                <input type="text" name="nombre-nino" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="Ej: Sofía">
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm mb-2 text-brand-200">Edad *</label>
-                                    <select name="edad" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white focus:outline-none focus:border-yellow-400 transition [&>option]:text-gray-900">
-                                        <option value="" class="text-gray-900">Seleccionar</option>
-                                        <option value="3" class="text-gray-900">3 años</option>
-                                        <option value="4" class="text-gray-900">4 años</option>
-                                        <option value="5" class="text-gray-900">5 años</option>
-                                        <option value="6" class="text-gray-900">6 años</option>
-                                        <option value="7" class="text-gray-900">7 años</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm mb-2 text-brand-200">Género</label>
-                                    <select name="genero" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white focus:outline-none focus:border-yellow-400 transition [&>option]:text-gray-900">
-                                        <option value="" class="text-gray-900">Seleccionar</option>
-                                        <option value="nino" class="text-gray-900">Niño</option>
-                                        <option value="nina" class="text-gray-900">Niña</option>
-                                        <option value="otro" class="text-gray-900">Prefiero no decir</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm mb-2 text-brand-200">¿Qué desencadenó la situación actual? (opcional)</label>
-                                <textarea name="desencadenante" rows="2" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="Ej: Desde el sismo del mes pasado no quiere dormir solo..."></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-sm mb-2 text-brand-200">¿Quiénes son los protagonistas de su día a día? *</label>
-                                <textarea name="familia" rows="3" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="Ej: Vive con mamá Laura, papá Diego, su hermanita Valentina de 2 años y el gato Michi..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 4: Contact -->
-                    <div class="quiz-step hidden" data-step="4">
-                        <h3 class="text-2xl font-bold mb-6">¿Dónde enviamos la propuesta terapéutica?</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm mb-2 text-brand-200">Tu nombre completo *</label>
-                                <input type="text" name="nombre-padre" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="Ej: María González">
-                            </div>
-                            <div>
-                                <label class="block text-sm mb-2 text-brand-200">Correo electrónico *</label>
-                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="tu@email.com">
-                            </div>
-                            <div>
-                                <label class="block text-sm mb-2 text-brand-200">País *</label>
-                                <select name="pais" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white focus:outline-none focus:border-yellow-400 transition [&>option]:text-gray-900">
-                                    <option value="" class="text-gray-900">Seleccionar país</option>
-                                    <option value="CO" class="text-gray-900">Colombia</option>
-                                    <option value="MX" class="text-gray-900">México</option>
-                                    <option value="AR" class="text-gray-900">Argentina</option>
-                                    <option value="CL" class="text-gray-900">Chile</option>
-                                    <option value="PE" class="text-gray-900">Perú</option>
-                                    <option value="EC" class="text-gray-900">Ecuador</option>
-                                    <option value="otro" class="text-gray-900">Otro</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm mb-2 text-brand-200">Teléfono (opcional)</label>
-                                <input type="tel" name="telefono" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-yellow-400 transition" placeholder="+57 300 123 4567">
-                            </div>
-                            <div class="pt-4">
-                                <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="paquete-interes" value="premium" class="mt-1 w-5 h-5 rounded border-white/30 bg-white/10 text-yellow-400 focus:ring-yellow-400">
-                                    <span class="text-sm text-brand-100">Estoy interesado en el <strong>Paquete Acompañamiento ($249)</strong> con sesiones neuropsicológicas incluidas</span>
-                                </label>
-                            </div>
-                            <div class="flex items-start gap-3 pt-2">
-                                <input type="checkbox" id="privacy" name="privacy" required class="mt-1 w-5 h-5 rounded border-white/30 bg-white/10 text-yellow-400 focus:ring-yellow-400">
-                                <label for="privacy" class="text-sm text-brand-200">
-                                    Entiendo que esta información es confidencial y será utilizada únicamente para diseñar la intervención neuropsicológica personalizada. *
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Navigation -->
-                    <div class="flex justify-between pt-6 border-t border-white/20">
-                        <button type="button" id="prev-btn" class="hidden px-6 py-3 rounded-full border-2 border-white/30 hover:bg-white/10 transition font-medium" onclick="changeStep(-1)">
-                            ← Anterior
-                        </button>
-                        <button type="button" id="next-btn" class="ml-auto px-8 py-3 bg-gradient-to-r from-yellow-400 to-coral-500 text-gray-900 rounded-full font-bold hover:shadow-lg transition transform hover:scale-105" onclick="changeStep(1)">
-                            Siguiente →
-                        </button>
-                        <button type="submit" id="submit-btn" class="hidden ml-auto px-8 py-3 bg-gradient-to-r from-yellow-400 to-coral-500 text-gray-900 rounded-full font-bold hover:shadow-lg transition transform hover:scale-105">
-                            Enviar Evaluación
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonios" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">Historias de transformación real</h2>
-                <p class="text-xl text-gray-600">Familias que reconstruyeron seguridad emocional</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400 text-xl">★★★★★</span>
+    <!-- ABOUT -->
+    <section class="section-about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://kimi-web-img.moonshot.cn/prod-data/online-image/search-upload/d56f6e0f1ba3d64e179d55d54b207e22" alt="Carolina Arenas Díaz">
+                    <div class="about-badge">
+                        <span class="number">+200</span>
+                        <p>Familias atendidas en toda Latinoamérica</p>
                     </div>
-                    <p class="text-gray-700 mb-6 italic leading-relaxed">
-                        "Después del sismo, mi hijo tenía hipervigilancia constante. El cuento 'El Castillo que Tembló' integró su experiencia de forma segura. En 3 semanas durmió toda la noche."
+                </div>
+                <div class="about-text">
+                    <h3>Una neurosicóloga que habla el lenguaje del corazón infantil</h3>
+                    <p>Soy <strong>Carolina Arenas Díaz</strong>, neurosicóloga clínica con especialización en trauma infantil, duelo y regulación emocional. Durante años observé cómo los niños procesaban experiencias difíciles: no con palabras, sino con comportamientos.</p>
+                    <p>Desarrollé <strong>NeuroCuentos</strong> porque entendí que entre los 3 y 7 años, el cerebro infantil necesita <strong>metáforas, no explicaciones</strong>. Un dragón que tiene miedo es más terapéutico que decir "no tengas miedo".</p>
+                    <p>Cada cuento que diseño es una <strong>intervención clínica rigurosa</strong>: evalúo el perfil neuropsicológico, identifico las redes cerebrales afectadas y creo una narrativa que permite la reconsolidación de memorias traumáticas de forma segura.</p>
+                    <p>He trabajado con cientos de familias en situaciones de vulnerabilidad, ayudando a niños a procesar desde sismos hasta separaciones complejas, siempre con el respeto profundo que merece el mundo interior de un niño.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Tu hijo puede integrar esta experiencia</h2>
+                <p>No se trata de "olvidar" lo difícil, sino de procesarlo de forma que ya no duela tanto. Los cuentos son el puente entre el trauma y la resiliencia.</p>
+                
+                <div class="contact-section">
+                    <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20vi%20tu%20página%20de%20NeuroCuentos%20y%20quiero%20consultarte%20sobre%20mi%20hijo/a" target="_blank" class="btn-whatsapp-main">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Escríbeme por WhatsApp
+                    </a>
+                    <p class="response-info">
+                        💬 Respuesta en menos de 24 horas<br>
+                        <span>📱 +57 320 836 4023</span>
                     </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-xl">👩</div>
-                        <div>
-                            <p class="font-bold text-gray-900">Diana M.</p>
-                            <p class="text-sm text-gray-500">Mamá de Lucas, 5 años • Ciudad de México</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400 text-xl">★★★★★</span>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic leading-relaxed">
-                        "La enuresis de mi hija era por ansiedad de separación post-divorcio. Carolina diseñó un cuento que incluía a ambos papás como protectores. Dejó de hacerse pipí y volvió a sonreír."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-xl">👨</div>
-                        <div>
-                            <p class="font-bold text-gray-900">Andrés P.</p>
-                            <p class="text-sm text-gray-500">Papá de Valentina, 6 años • Bogotá</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400 text-xl">★★★★★</span>
-                    </div>
-                    <p class="text-gray-700 mb-6 italic leading-relaxed">
-                        "Mi hijo es altamente sensible y las rabietas eran incontrolables. El cuento del 'Dragón que Aprendió a Usar su Fuego' le dio herramientas para regularse. Cambió nuestra vida familiar."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-xl">👩</div>
-                        <div>
-                            <p class="font-bold text-gray-900">Camila R.</p>
-                            <p class="text-sm text-gray-500">Mamá de Santiago, 4 años • Buenos Aires</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Carolina -->
-    <section class="py-24 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1">
-                    <div class="relative">
-                        <div class="bg-white rounded-3xl shadow-xl p-8 relative z-10">
-                            <div class="aspect-square bg-gradient-to-br from-brand-100 to-coral-100 rounded-2xl flex items-center justify-center mb-6">
-                                <div class="text-center">
-                                    <div class="text-8xl mb-4">👩‍⚕️</div>
-                                    <p class="text-brand-800 font-serif italic">"La neuroplasticidad infantil es una oportunidad para reescribir historias dolorosas"</p>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <h3 class="text-2xl font-bold text-gray-900">Carolina Arenas Díaz</h3>
-                                <p class="text-brand-600 font-medium">Neurosicóloga Clínica</p>
-                                <div class="mt-4 flex justify-center gap-2 flex-wrap">
-                                    <span class="px-3 py-1 bg-brand-50 rounded-full text-xs text-brand-700">Especialista en trauma infantil</span>
-                                    <span class="px-3 py-1 bg-coral-50 rounded-full text-xs text-coral-700">Población vulnerable</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute -bottom-6 -right-6 w-full h-full bg-brand-200 rounded-3xl -z-10"></div>
-                    </div>
-                </div>
-
-                <div class="order-1 lg:order-2">
-                    <h2 class="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
-                        Una neurosicóloga que habla el lenguaje del corazón infantil
-                    </h2>
-                    <div class="space-y-4 text-gray-600">
-                        <p>
-                            Soy <strong>Carolina Arenas Díaz</strong>, neurosicóloga clínica con especialización en trauma infantil, duelo y regulación emocional. Durante años observé cómo los niños procesaban experiencias difíciles: no con palabras, sino con comportamientos.
-                        </p>
-                        <p>
-                            Desarrollé <strong>NeuroCuentos</strong> porque entendí que entre los 3 y 7 años, el cerebro infantil necesita <strong>metáforas, no explicaciones</strong>. Un dragón que tiene miedo es más terapéutico que decir "no tengas miedo".
-                        </p>
-                        <p>
-                            Cada cuento que diseño es una <strong>intervención clínica rigurosa</strong>: evalúo el perfil neuropsicológico, identifico las redes cerebrales afectadas y creo una narrativa que permite la reconsolidación de memorias traumáticas de forma segura.
-                        </p>
-                        <p>
-                            He trabajado con cientos de familias en situaciones de vulnerabilidad, ayudando a niños a procesar desde sismos hasta separaciones complejas, siempre con el respeto profundo que merece el mundo interior de un niño.
-                        </p>
-                    </div>
-                    <div class="mt-8 flex items-center gap-4">
-                        <div class="flex -space-x-2">
-                            <div class="w-10 h-10 rounded-full bg-brand-100 border-2 border-white flex items-center justify-center text-xs font-bold text-brand-700">CO</div>
-                            <div class="w-10 h-10 rounded-full bg-green-100 border-2 border-white flex items-center justify-center text-xs font-bold text-green-700">MX</div>
-                            <div class="w-10 h-10 rounded-full bg-blue-100 border-2 border-white flex items-center justify-center text-xs font-bold text-blue-700">AR</div>
-                            <div class="w-10 h-10 rounded-full bg-red-100 border-2 border-white flex items-center justify-center text-xs font-bold text-red-700">CL</div>
-                        </div>
-                        <p class="text-sm text-gray-600">Atendiendo familias en toda Latinoamérica</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-24 bg-gradient-to-r from-brand-600 to-coral-600 text-white text-center">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl md:text-6xl font-serif font-bold mb-6">Tu hijo puede integrar esta experiencia</h2>
-            <p class="text-xl mb-8 text-brand-100">
-                No se trata de "olvidar" lo difícil, sino de procesarlo de forma que ya no duela tanto. 
-                Los cuentos son el puente entre el trauma y la resiliencia.
-            </p>
-            <button onclick="scrollToCuestionario()" class="bg-white text-brand-700 px-10 py-5 rounded-full font-bold text-xl hover:shadow-2xl transition transform hover:scale-105">
-                Comenzar Evaluación →
-            </button>
-            <p class="mt-6 text-sm text-brand-200">
-                Respuesta en menos de 24 horas • Intervención 100% personalizada • Entrega en 7 días
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-gradient-to-br from-brand-500 to-coral-500 rounded-lg flex items-center justify-center font-bold">N</div>
-                    <span class="text-xl font-bold">NeuroCuentos</span>
-                </div>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Terapia narrativa neuropsicológica para niños de 3 a 7 años. 
-                    Intervenciones clínicas basadas en evidencia científica.
-                </p>
-            </div>
-            
-            <div>
-                <h4 class="font-bold mb-4">Especialidades</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><a href="#" class="hover:text-white transition">Trauma agudo</a></li>
-                    <li><a href="#" class="hover:text-white transition">Duelo infantil</a></li>
-                    <li><a href="#" class="hover:text-white transition">Ansiedad y miedos</a></li>
-                    <li><a href="#" class="hover:text-white transition">Regresiones conductuales</a></li>
-                    <li><a href="#" class="hover:text-white transition">Desregulación emocional</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="font-bold mb-4">Contacto</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li class="flex items-center gap-2">
-                        <span>📧</span> hola@neurocuentos.co
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span>📱</span> WhatsApp: +57 300 123 4567
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span>🕐</span> Lunes a Viernes: 9am - 6pm (COL)
-                    </li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="font-bold mb-4">Síguenos</h4>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition">IG</a>
-                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition">FB</a>
-                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition">TK</a>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-            <p>&copy; 2026 NeuroCuentos by Carolina Arenas Díaz. Todos los derechos reservados.</p>
-            <p class="mt-2">Neurosicología Clínica • Intervención basada en evidencia científica</p>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 NeuroCuentos by Carolina Arenas Díaz • Neurosicóloga Clínica<br>
+            Atendiendo familias en toda Latinoamérica</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Quiz Navigation
-        let currentStep = 1;
-        const totalSteps = 4;
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/573208364023?text=Hola%20Carolina,%20vi%20tu%20página%20de%20NeuroCuentos%20y%20quiero%20consultarte%20sobre%20mi%20hijo/a" 
+       target="_blank" 
+       class="whatsapp-float"
+       aria-label="Contactar a Carolina por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="whatsapp-tooltip">💬 Escribir a Carolina</span>
+    </a>
 
-        function updateProgress() {
-            const progress = (currentStep / totalSteps) * 100;
-            document.getElementById('progress-bar').style.width = progress + '%';
-            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
-            document.getElementById('current-step').textContent = currentStep;
-            
-            document.querySelectorAll('.quiz-step').forEach((step) => {
-                const stepNum = parseInt(step.dataset.step);
-                if (stepNum === currentStep) {
-                    step.classList.remove('hidden');
-                } else {
-                    step.classList.add('hidden');
-                }
-            });
-
-            document.querySelectorAll('.step-indicator').forEach((ind) => {
-                const indStep = parseInt(ind.dataset.step);
-                if (indStep <= currentStep) {
-                    ind.classList.add('active');
-                } else {
-                    ind.classList.remove('active');
-                }
-            });
-
-            document.getElementById('prev-btn').classList.toggle('hidden', currentStep === 1);
-            
-            if (currentStep === totalSteps) {
-                document.getElementById('next-btn').classList.add('hidden');
-                document.getElementById('submit-btn').classList.remove('hidden');
-            } else {
-                document.getElementById('next-btn').classList.remove('hidden');
-                document.getElementById('submit-btn').classList.add('hidden');
-            }
-        }
-
-        function validateStep() {
-            const currentStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
-            
-            if (currentStep === 1) {
-                const radio = currentStepEl.querySelector('input[type="radio"]:checked');
-                if (!radio) {
-                    alert('Por favor selecciona una situación');
-                    return false;
-                }
-            }
-            
-            if (currentStep === 3 || currentStep === 4) {
-                const required = currentStepEl.querySelectorAll('input[required], select[required], textarea[required]');
-                let valid = true;
-                required.forEach(field => {
-                    if (!field.value.trim()) {
-                        field.classList.add('border-red-400');
-                        valid = false;
-                    } else {
-                        field.classList.remove('border-red-400');
-                    }
-                });
-                
-                if (!valid) {
-                    alert('Por favor completa todos los campos requeridos');
-                    return false;
-                }
-            }
-
-            if (currentStep === 4) {
-                const privacy = document.getElementById('privacy');
-                if (!privacy.checked) {
-                    alert('Debes aceptar la política de privacidad para continuar');
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        function changeStep(direction) {
-            if (direction === 1 && !validateStep()) return;
-            
-            currentStep += direction;
-            if (currentStep < 1) currentStep = 1;
-            if (currentStep > totalSteps) currentStep = totalSteps;
-            
-            updateProgress();
-        }
-
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.addEventListener('click', function(e) {
-                if (e.target.tagName === 'INPUT') return;
-                
-                const input = this.querySelector('input');
-                if (input.type === 'radio') {
-                    const name = input.name;
-                    document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
-                        radio.closest('.quiz-option').classList.remove('selected');
-                    });
-                    this.classList.add('selected');
-                    input.checked = true;
-                } else if (input.type === 'checkbox') {
-                    this.classList.toggle('selected');
-                    input.checked = !input.checked;
-                }
-            });
-        });
-
-        document.getElementById('neurocuestionario').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (!validateStep()) return;
-
-            const formData = new FormData(this);
-            const data = {};
-            
-            const personajes = [];
-            formData.forEach((value, key) => {
-                if (key === 'personajes') {
-                    personajes.push(value);
-                } else {
-                    data[key] = value;
-                }
-            });
-            if (personajes.length > 0) {
-                data['personajes'] = personajes;
-            }
-
-            console.log('Datos del cuestionario:', data);
-            
-            alert(`¡Gracias ${data['nombre-padre']}! Hemos recibido la evaluación sobre ${data['nombre-nino']}. En menos de 24 horas recibirás una propuesta terapéutica personalizada en tu correo: ${data.email}`);
-            
-            this.reset();
-            currentStep = 1;
-            updateProgress();
-            document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
-        });
-
-        function scrollToCuestionario() {
-            document.getElementById('cuestionario').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-            } else {
-                navbar.classList.remove('shadow-md');
-            }
-        });
-
-        if (typeof gsap !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-
-            gsap.from('.specialty-card', {
-                scrollTrigger: {
-                    trigger: '#especialidades',
-                    start: 'top 80%',
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.1
-            });
-
-            gsap.from('.price-card', {
-                scrollTrigger: {
-                    trigger: '#paquetes',
-                    start: 'top 80%',
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2
-            });
-        }
-    </script>
 </body>
 </html>
